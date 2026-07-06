@@ -7,10 +7,10 @@
 - **英文名称**: Web3 Summer Internship Program: Monad Builder Camp
 - **报名入口**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
 - **官方推文**: https://x.com/LXDAO_Official/status/2066328174963933518
-- **报名时间**: 2026/06/15 - 2026/07/05
-- **参与方式**: 线上为主，结合任务打卡、社群协作、Workshop、Hackathon、Demo Day
-- **费用**: 免费
-- **周期**: 约 5 周（3 周共学 + 1 周 Hackathon + 1 周作品集整理）
+- **开营仪式**: 2026-07-05 19:00 UTC+8
+- **活动时间**: 2026/06/15 - 2026/07/05 (报名)，5 周实习
+- **日常节奏**: 每晚 19:00 嘉宾分享，20:00 Co-learning
+- **打卡规则**: 每日打卡，周六周日休息
 
 ## 适合人群
 
@@ -60,4 +60,5 @@
 
 - [报名页面](https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview)
 - [LXDAO 官方推文](https://x.com/LXDAO_Official/status/2066328174963933518)
+- [开营仪式笔记](./opening-ceremony.md)
 - [来源剪报](../../../mnt/d/ObsidianWorkspace/Neo/LLM-Wiki/raw/clippings/Web3%20%E6%9A%91%E6%9C%9F%E5%AE%9E%E4%B9%A0%E8%AE%A1%E5%88%92%E6%8A%A5%E5%90%8D%E5%BC%80%E5%90%AF%EF%BC%9A21%20%E5%A4%A9%E5%81%9A%E5%87%BA%E4%BD%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E9%93%BE%E4%B8%8A%E4%BA%A7%E5%93%81.md)

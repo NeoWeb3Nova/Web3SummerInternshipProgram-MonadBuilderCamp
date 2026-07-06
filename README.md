@@ -5,8 +5,10 @@
 - **项目目录**: `/home/neo/workspace/projects/Web3SummerInternshipProgram-MonadBuilderCamp`
 - **来源**: [Web3 暑期实习计划报名开启：21 天做出你的第一个链上产品](https://x.com/LXDAO_Official/status/2066328174963933518)
 - **报名入口**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
+- **开营仪式**: 2026-07-05 (周日) 19:00 UTC+8
 - **活动时间**: 2026/06/15 起报名，周期约 5 周
 - **费用**: 免费
+- **开营仪式笔记**: `docs/opening-ceremony.md`
 
 ---
 
@@ -41,10 +43,11 @@
 ├── README.md              # 本文件：项目总览
 ├── docs/                  # 项目文档、计划、笔记
 │   ├── overview.md        # 活动基本信息与关键链接
+│   ├── opening-ceremony.md # 开营仪式记录（字幕整理）
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
-├── tasks/                 # 每周任务清单
+...
 │   ├── week-01.md
 │   ├── week-02-tech.md
 │   ├── week-02-ops.md
@@ -70,9 +73,10 @@
 ## 快速开始
 
 1. 确认已报名: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
-2. 阅读 `docs/overview.md` 和 `docs/schedule.md`
-3. 从 `tasks/week-01.md` 开始第一周任务
-4. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
+2. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情
+3. 阅读 `docs/overview.md` 和 `docs/schedule.md`
+4. 从 `tasks/week-01.md` 开始第一周任务
+5. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
 
 ## 目标交付物
 
