@@ -1,0 +1,36 @@
+# Secrets
+.env
+.env.local
+.env.*.local
+*.key
+mnemonic.txt
+
+# Node
+node_modules/
+dist/
+build/
+.cache/
+
+# Foundry
+cache/
+out/
+broadcast/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary
+tmp/
+temp/
