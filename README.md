@@ -9,6 +9,8 @@
 - **活动时间**: 2026/06/15 起报名，周期约 5 周
 - **费用**: 免费
 - **开营仪式笔记**: `docs/opening-ceremony.md`
+- **开营仪式完整转录**: `docs/opening-ceremony-transcript.md`
+- **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
 ---
 
@@ -43,7 +45,8 @@
 ├── README.md              # 本文件：项目总览
 ├── docs/                  # 项目文档、计划、笔记
 │   ├── overview.md        # 活动基本信息与关键链接
-│   ├── opening-ceremony.md # 开营仪式记录（字幕整理）
+│   ├── opening-ceremony.md # 开营仪式纪要（完整修复后字幕整理）
+│   ├── opening-ceremony-transcript.md # 开营仪式完整转录
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
@@ -73,7 +76,7 @@
 ## 快速开始
 
 1. 确认已报名: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
-2. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情
+2. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情（如需逐字稿见 `docs/opening-ceremony-transcript.md`）
 3. 阅读 `docs/overview.md` 和 `docs/schedule.md`
 4. 从 `tasks/week-01.md` 开始第一周任务
 5. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
