@@ -10,15 +10,24 @@
 - **费用**: 免费
 - **开营仪式笔记**: `docs/opening-ceremony.md`
 - **开营仪式完整转录**: `docs/opening-ceremony-transcript.md`
+- **Monad 技术笔记**: `docs/monad-technical-notes.md`
 - **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
 ---
 
 ## 三个关键词
 
-- **Learn by Building**: 在实践中学习，而不是学完再实践。
-- **AI-native**: 把 AI 当作协作伙伴，记录「AI 帮了什么，人做了什么判断」。
+- **系统学习**: 解决 Web3 信息碎片化，用 5 周路径把概念、链上体验、项目实践串起来。
+- **Learn by Building**: 从第一笔交易、第一份合约、Mini Demo 到 Hackathon，不等“学完”再实践。
+- **AI-native Builder**: 把 AI 当作学习和开发伙伴，但记录「AI 帮了什么，人做了什么判断」。
 - **Career Evidence**: 让每次学习都沉淀为可展示、可验证、可复用的成果。
+
+## 每日节奏
+
+- **19:00**: 嘉宾分享 / 行业一线经验
+- **20:00**: Co-learning / 助教答疑
+- **工作日**: 每日打卡并提交学习记录
+- **周末**: 休息、补档、复盘
 
 ## 三条 Builder Track
 
@@ -47,6 +56,7 @@
 │   ├── overview.md        # 活动基本信息与关键链接
 │   ├── opening-ceremony.md # 开营仪式纪要（完整修复后字幕整理）
 │   ├── opening-ceremony-transcript.md # 开营仪式完整转录
+│   ├── monad-technical-notes.md # Monad 技术学习笔记（基于 Box 分享）
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
@@ -62,13 +72,18 @@
 │   └── YYYY-MM-DD.md      # 每日记录模板
 ├── submissions/           # 每周/阶段提交物
 │   ├── week-01/
-│   ├── week-02/
+│   ├── week-02-tech/
+│   ├── week-02-ops/
+│   ├── week-02-research/
 │   ├── week-03/
 │   ├── week-04-hackathon/
 │   └── week-05-portfolio/
 ├── experiments/           # 代码实验、PoC、脚本
 │   ├── monad-wallet-setup/
-│   └── first-contract-deploy/
+│   ├── first-contract-deploy/
+│   ├── week-02-contract/
+│   ├── week-02-frontend/
+│   └── week-03-prototype/
 ├── assets/                # 图片、截图、参考材料
 └── scripts/               # 自动化脚本
 ```
@@ -77,7 +92,7 @@
 
 1. 确认已报名: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
 2. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情（如需逐字稿见 `docs/opening-ceremony-transcript.md`）
-3. 阅读 `docs/overview.md` 和 `docs/schedule.md`
+3. 阅读 `docs/overview.md`、`docs/schedule.md` 和 `docs/monad-technical-notes.md`
 4. 从 `tasks/week-01.md` 开始第一周任务
 5. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
 

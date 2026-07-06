@@ -1,96 +1,147 @@
 # 活动节奏（5 周）
 
-```
-Week 1: 进入 Onchain World
-Week 2: 选择 Builder Track
-Week 3: 跨轨协作与 Mini Demo
-Week 4: Monad Builder Hackathon
-Week 5: Resume & Portfolio Workshop
-```
+> 开营仪式确认：整体为 5 周，前 4 周是“3 周共学 + 1 周 Hackathon”，第 5 周做作品集、简历、个人品牌和机会连接。
 
-## Week 1: 进入 Onchain World
+## 总节奏
 
-**目标**: 建立共同基础，完成第一次链上交互。
+| 周次 | 主题 | 核心问题 | 关键产出 |
+|------|------|----------|----------|
+| Week 1 | 认知奠基期 | 我如何真正进入 Web3？ | 钱包、链上体验、AI 工具、第一笔交易、学习日志 |
+| Week 2 | 分赛道学习 | 我更适合 Tech / Ops / Research 哪条路径？ | 分轨任务、研究/运营/技术材料 |
+| Week 3 | 合作实战期 | 如何和不同角色组队做出 Mini Demo？ | 小队、问题定义、MVP 原型、Mini Demo |
+| Week 4 | Hackathon 战场 | 如何把原型打磨成参赛作品？ | 可运行 Demo、Repo、Pitch、Demo Video、Demo Day |
+| Week 5 | 作品集与就业准备 | 如何把项目变成职业证据？ | Portfolio、简历 bullet、面试讲稿、后续机会清单 |
+
+## 日常节奏
+
+- **19:00**: 嘉宾分享 / 行业一线经验
+- **20:00**: Co-learning / 助教答疑 / 一起学习当天任务
+- **工作日**: 每日打卡，提交学习记录和任务成果
+- **周六、周日**: 休息 / 补档 / 复盘
+- **建议投入**: 小白 2-3 小时/天，有基础者约 1 小时/天
+
+## Week 1: 认知奠基期
+
+**目标**: 从零开始进入 Web3，建立共同基础。
+
+开营仪式中提到的重点：
+
+- 钱包创建
+- 链上体验
+- 产品认知
+- AI 工具入门
+- 完成第一笔链上交互
+- 使用 AI 辅助学习和 vibe coding
 
 关键动作：
-- 安装/配置钱包（推荐 MetaMask 或兼容 Monad 的钱包）
+
+- 安装/配置钱包（MetaMask 或兼容 Monad 的钱包）
 - 配置 Monad Testnet 网络
 - 领取测试网代币
 - 完成第一次交易
-- 部署第一个 Monad 合约（HelloWorld 级别）
-- 记录钱包地址、交易哈希、合约地址
+- 记录钱包地址、交易哈希、截图
+- 阅读 Monad 基础资料
+- 建立每日学习日志
 
 交付物：
+
 - 钱包地址
 - 测试网交易截图/记录
-- 第一个合约地址
+- 网络配置记录
 - Week 1 学习日志
+- AI 工具配置/使用记录
 
-## Week 2: 选择 Builder Track
+## Week 2: 分赛道学习
 
-**目标**: 根据个人背景选择 Tech / Ops / Research 方向，完成分轨任务。
+**目标**: 根据个人兴趣选择 Tech / Ops / Research 方向，完成分轨任务。
+
+说明：精力足够可以多线学习，但主线必须明确。
 
 ### Tech Track
-- 学习 Solidity / Foundry / Hardhat 基础
-- 实现一个简单合约并写测试
-- 搭建前端连接钱包
-- 提交 Repo 与 README
+
+- Solidity / Foundry / Hardhat 基础
+- 钱包连接和前端交互
+- 简单合约与测试
+- Monad Testnet 部署
 
 ### Ops Track
-- 选择 Monad 生态中的一个项目/社区进行观察
-- 设计一个增长/传播方案
-- 执行最小规模实验并记录数据
+
+- Monad 生态项目观察
+- 用户问题和痛点收集
+- 内容 / Meme / 活动 Campaign 设计
+- 最小增长实验和数据复盘
 
 ### Research Track
-- 阅读 Monad 技术文档或生态项目
-- 完成一篇项目分析或生态地图
-- 输出研究笔记/文章
 
-## Week 3: 跨轨协作与 Mini Demo
+- Monad 技术文档阅读
+- 高吞吐链、EVM 兼容、并行执行、共识机制研究
+- 产品研究、DAO 治理、数据分析
+- 输出研究文章或生态地图
 
-**目标**: 跨轨组成小组，把想法推进成可展示的 prototype。
+## Week 3: 合作实战期
+
+**目标**: 开发、运营、研究同学互相组队，共同构建 Mini Demo。
+
+开营仪式强调：AI 可以快速做出东西，但产品是否面向真实市场、是否解决真实痛点，仍需要产品判断和用户反馈。
 
 关键动作：
-- 组队（建议 Tech + Ops + Research 混合）
-- 确定一个 Monad 上的产品/研究/运营想法
-- 在 1 周内完成最小可行原型
-- 准备 3-5 分钟 Mini Demo
+
+- 组建小团队
+- 选择一个真实问题 / 用户痛点
+- 邀请或吸收一线产品经理反馈
+- Tech / Ops / Research 协作
+- 从零到一完成 MVP / Mini Demo
+- 准备 3-5 分钟展示
 
 交付物：
-- Mini Demo 演示
-- Prototype 链接/合约/Repo
-- 团队分工记录
+
+- 团队介绍与分工
+- 问题定义
+- 方案设计
+- Prototype / Mini Demo
+- 反馈与复盘
 
 ## Week 4: Monad Builder Hackathon
 
-**目标**: 集中交付完整项目。
+**目标**: 把前 3 周积累打磨成 Hackathon 参赛作品。
 
-提交内容：
+关键动作：
+
+- Idea brainstorm
+- 团队组建与角色确认
+- 产品冲刺
+- 导师辅导
+- 用户反馈
+- Demo Day
+- 提交 Hackathon 作品
+
+交付物：
+
 - 可运行产品 Demo
 - GitHub Repo
 - Pitch Deck
 - Demo Video
 - Final Presentation
+- 团队介绍与分工
+- 黑客松复盘
+
+## Week 5: 作品集与就业准备
+
+**目标**: 把学习过程变成可展示、可验证的职业证据。
 
 关键动作：
-- 完善产品功能
-- 部署到测试网
-- 准备路演材料
-- 参与 Demo Day
 
-## Week 5: Resume & Portfolio Workshop
-
-**目标**: 把项目整理成可展示的职业证据。
-
-关键动作：
-- 编写项目 README
-- 整理作品集页面
-- 提炼简历 bullet
+- 整理作品集
+- 优化简历
 - 准备面试表达
-- 连接后续机会
+- 建设个人品牌
+- 连接生态机会、实习机会、生态大使机会
+- 跟进 Monad / LXDAO / 以太坊基金会等相关资源
 
 交付物：
+
 - Portfolio Page
 - 简历项目经历
 - 面试讲稿
 - 后续机会跟进清单
+- 5 周总复盘
