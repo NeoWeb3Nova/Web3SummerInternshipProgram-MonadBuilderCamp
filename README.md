@@ -4,13 +4,17 @@
 
 - **项目目录**: `/home/neo/workspace/projects/Web3SummerInternshipProgram-MonadBuilderCamp`
 - **来源**: [Web3 暑期实习计划报名开启：21 天做出你的第一个链上产品](https://x.com/LXDAO_Official/status/2066328174963933518)
-- **报名入口**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
+- **项目介绍**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
+- **学习面板**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=learning（登录后查看每周/每日任务列表）
 - **开营仪式**: 2026-07-05 (周日) 19:00 UTC+8
 - **活动时间**: 2026/06/15 起报名，周期约 5 周
 - **费用**: 免费
 - **开营仪式笔记**: `docs/opening-ceremony.md`
 - **开营仪式完整转录**: `docs/opening-ceremony-transcript.md`
+- **DevRel 成长之路笔记**: `docs/devrel-growth.md`
+- **DevRel 成长之路完整转录**: `docs/devrel-growth-transcript.md`
 - **Monad 技术笔记**: `docs/monad-technical-notes.md`
+- **Web3Career 平台入口记录**: `docs/web3career-platform.md`
 - **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
 ---
@@ -56,7 +60,10 @@
 │   ├── overview.md        # 活动基本信息与关键链接
 │   ├── opening-ceremony.md # 开营仪式纪要（完整修复后字幕整理）
 │   ├── opening-ceremony-transcript.md # 开营仪式完整转录
+│   ├── devrel-growth.md # DevRel 成长之路分享会纪要
+│   ├── devrel-growth-transcript.md # DevRel 成长之路完整转录
 │   ├── monad-technical-notes.md # Monad 技术学习笔记（基于 Box 分享）
+│   ├── web3career-platform.md # Web3Career 概览页与学习面板入口记录
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
@@ -91,10 +98,11 @@
 ## 快速开始
 
 1. 确认已报名: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
-2. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情（如需逐字稿见 `docs/opening-ceremony-transcript.md`）
-3. 阅读 `docs/overview.md`、`docs/schedule.md` 和 `docs/monad-technical-notes.md`
-4. 从 `tasks/week-01.md` 开始第一周任务
-5. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
+2. 每天打开学习面板查看当天任务: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=learning
+3. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情（如需逐字稿见 `docs/opening-ceremony-transcript.md`）
+4. 阅读 `docs/overview.md`、`docs/schedule.md` 和 `docs/monad-technical-notes.md`
+5. 从 `tasks/week-01.md` 开始第一周任务
+6. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
 
 ## 目标交付物
 

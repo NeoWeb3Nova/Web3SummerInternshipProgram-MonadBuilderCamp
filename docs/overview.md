@@ -5,7 +5,8 @@
 - **主办方**: LXDAO
 - **活动名称**: Web3 暑期实习计划 - Monad Builder Camp
 - **英文名称**: Web3 Summer Internship Program: Monad Builder Camp
-- **报名入口**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
+- **项目介绍**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
+- **学习面板**: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=learning（登录后查看每周/每日任务列表）
 - **官方推文**: https://x.com/LXDAO_Official/status/2066328174963933518
 - **开营仪式**: 2026-07-05 19:00 UTC+8
 - **活动周期**: 约 5 周：3 周共学 + 1 周 Hackathon + 1 周作品集 / 就业准备
@@ -15,6 +16,7 @@
 - **开营纪要**: `docs/opening-ceremony.md`
 - **完整转录**: `docs/opening-ceremony-transcript.md`
 - **Monad 技术笔记**: `docs/monad-technical-notes.md`
+- **Web3Career 平台入口记录**: `docs/web3career-platform.md`
 
 ## 适合人群
 
@@ -78,8 +80,10 @@ Monad 的学习价值：
 
 ## 参考链接
 
-- [报名页面](https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview)
+- [项目介绍 / 概览页](https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview)
+- [学习面板](https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=learning)
 - [LXDAO 官方推文](https://x.com/LXDAO_Official/status/2066328174963933518)
+- [Web3Career 平台入口记录](./web3career-platform.md)
 - [开营仪式纪要](./opening-ceremony.md)
 - [开营仪式完整转录](./opening-ceremony-transcript.md)
 - [Monad 技术学习笔记](./monad-technical-notes.md)
