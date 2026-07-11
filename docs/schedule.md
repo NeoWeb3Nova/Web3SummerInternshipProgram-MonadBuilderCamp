@@ -51,32 +51,34 @@
 - Week 1 学习日志
 - AI 工具配置/使用记录
 
-## Week 2: 分赛道学习
+## Week 2: 分赛道学习｜Builder Track Split
 
-**目标**: 根据个人兴趣选择 Tech / Ops / Research 方向，完成分轨任务。
+**目标**: 在 Research / Ops / Dev 三条路径中选择一个主方向，完成一份可验证的 Proof of Work，并为 Week 3 组队准备清晰的角色定位。
 
-说明：精力足够可以多线学习，但主线必须明确。
+**核心理念**: Week 2 不是让所有人做同一种任务，而是帮助每位 Builder 找到适合自己的方向。精力足够可以多线学习，但主线必须明确。
 
-### Tech Track
+**第二周结束后你将能够**:
+- 🎯 找到适合自己的 Web3 职业方向（Research / Ops / Dev）
+- 🤖 学会使用 AI 协助研究、运营或开发
+- 📚 独立阅读 Web3 协议文档并快速理解一个项目
+- 🛠 完成一份属于自己的 Proof of Work
+- 👥 带着作品集进入 Week 3 与其他 Builder 组队
 
-- Solidity / Foundry / Hardhat 基础
-- 钱包连接和前端交互
-- 简单合约与测试
-- Monad Testnet 部署
+### 详细课程安排
 
-### Ops Track
+| 日期 | 主题 | 核心产出 |
+|------|------|----------|
+| Day 1 | 职业方向选择 | Role Choice Card + Week 2 Role Log + AI Collaboration Log |
+| Day 2 | 路径启动：可执行 Scope | Research Question Card / Space Brief / Dev Plan |
+| Day 3 | 路径深入：本方向 Workflow | EIP/MIP Reading Card + Protocol Card / Agenda & Run of Show / Code Skeleton |
+| Day 4 | 路径产出：第一份 PoW | Product-to-Market Brief / Space 执行预案 / Prototype Evidence |
+| Day 5 | 路径收束：Portfolio | Portfolio Pack + Week 3 Role Statement |
 
-- Monad 生态项目观察
-- 用户问题和痛点收集
-- 内容 / Meme / 活动 Campaign 设计
-- 最小增长实验和数据复盘
+### 三轨任务文件
 
-### Research Track
-
-- Monad 技术文档阅读
-- 高吞吐链、EVM 兼容、并行执行、共识机制研究
-- 产品研究、DAO 治理、数据分析
-- 输出研究文章或生态地图
+- Research Track: `tasks/week-02-research.md`
+- Ops Track: `tasks/week-02-ops.md`
+- Dev / Tech Track: `tasks/week-02-tech.md`
 
 ## Week 3: 合作实战期
 
