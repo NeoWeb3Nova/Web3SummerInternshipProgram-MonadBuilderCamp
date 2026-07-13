@@ -65,30 +65,37 @@
 | 资料/链接 | 类型 | 收获 |
 |-----------|------|------|
 | Week 2 Day 2 任务说明（当前项目 `tasks/week-02-tech.md`） | 课程任务 | 明确 Day 2 目标：把职业方向变成一个可执行 Scope |
-| Foundry Book https://book.getfoundry.sh/ | 开发文档 | 复习合约编译、测试、部署脚本写法 |
-| viem docs https://viem.sh/ | 前端/链交互 | 确认 React 中读取/写入合约的标准方式 |
-| RainbowKit docs https://www.rainbowkit.com/docs | 钱包连接 | 确认 Monad 等自定义链的钱包适配方案 |
+| Moss README + getting-started.md | 协议/工具 | 理解 `discover → load → action → simulate` 四步骤 |
+| docs/mcp-tools.md | 工具契约 | 确认 discover/load/action/simulate 的输入输出 |
+| docs/agent-skill.md | Agent 安全 | 明确必须 simulate 后才能给用户/签名者 |
+| packages/protocols/_template | 贡献入口 | 了解一个 protocol adapter 的最小结构 |
 
 #### 使用过的 Prompt（示例）
 
-> 「我是 Dev 方向，本周要完成一个基于 Foundry 管理、带前端页面的最小 Demo。请帮我定义 Scope、Architecture、Tech Stack，并明确真实实现 / mock / 本周不做的边界。」
+> 「我是 Dev 方向，本周想深入学习并贡献 nishuzumi/moss。请帮我定义一个最小 Scope，包括本地构建、示例验证、核心模块阅读、适配器草稿、贡献准备，并明确本周不做的边界。」
 
 #### 遇到的问题 / 错误
 
-- 暂无技术错误。Day 2 完成 Scope 定义，尚未进入编码。
+- 问题：按文档运行 `pnpm --filter @themoss/example-simple-flow exec tsx src/play.ts` 报错，因为 `src/play.ts` 不存在。
+- 解决：通过 `find` 查找实际示例文件，改用 `src/wmon-wrap.ts` 成功跑通。
 
 #### 判断变化
 
-- 决定最小 Demo 不是留言板或 Escrow，而是**最简单的链上计数器 + 前端页面**，先把 Monad Testnet 部署/交互闭环跑通。
-- 保留 Escrow / Agent Wallet / PactGuard 作为 Week 3 组队方向的扩展 backlog。
+- 决定放弃原先的“MonadTally 计数器 Demo”，转攻 **Moss 深度学习 + 开源贡献准备**。
+- 认为 Week 2 最有价值的产出是**能跑通一套现代 Agent 交易安全层，并理解其可贡献点**。
 
 #### 今日产出
 
-- `submissions/week-02-tech/dev-plan.md`
+- 本地跑通 Moss：`pnpm install` / `pnpm -r build` / `MOSS_SKIP_E2E=1 pnpm -r test` 通过
+- 验证示例 `wmon-wrap.ts` 输出 `✓ No warnings`
+- 重写 `submissions/week-02-tech/dev-plan.md` 为 Moss 强化版
 
 #### 下一步计划
 
-- Day 2 下午 / Day 3：初始化 Foundry 项目，编写 `Counter.sol` + test，配置 Monad Testnet RPC。
+- Day 2 下午 / Day 3：逐行阅读 `packages/core`、`packages/simulator`、`_template`、`wmon.ts`。
+- Day 3 下午：试写一个简单的 query/capability 草稿。
+- Day 4：根据学习体会，确定一个可贡献的文档/测试/adapter 改进点。
+- Day 5：整理 Portfolio Pack 与 Week 3 Role Statement。
 
 ---
 

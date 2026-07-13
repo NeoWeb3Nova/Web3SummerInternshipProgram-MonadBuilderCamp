@@ -1,4 +1,4 @@
-# Week 2 Day 2｜AI-assisted Dev Plan — Dev Builder
+# Week 2 Day 2｜AI-assisted Dev Plan — Dev Builder（Moss 强化版）
 
 > 学员：Neo  
 > 方向：Dev Builder（Tech）  
@@ -7,144 +7,168 @@
 
 ---
 
-## 1. 项目一句话
+## 1. 背景：为什么选择 Moss
 
-**MonadTally**：一个部署在 Monad 测试网上的链上计数器，带最小前端页面，支持钱包连接、读取计数、+1 写入、重置（仅 owner），并记录真实交易哈希。
+本周实习计划强调知识储备与挑战。在研究了 [nishuzumi/moss](https://github.com/nishuzumi/moss) 后，决定以 Moss 作为 Week 2 的主要学习/贡献对象，理由：
 
-> 选择计数器而非更复杂的 Escrow/Agent Wallet，是因为它是 Monad 测试网环境验证的最小闭环，且为 Week 3 组队保留可扩展接口。
-
----
-
-## 2. 用户动作
-
-| 用户动作 | 前端界面 | 链上结果 |
-|---------|---------|---------|
-| 连接钱包 | 点击 "Connect Wallet" | 获取用户地址，显示余额/网络 |
-| 查看计数 | 页面自动读取 | 显示 `Counter.sol` 的 `number()` 值 |
-| 增加计数 | 点击 "+1" 按钮 | 调用 `increment()`，生成 tx hash |
-| 重置计数 | Owner 点击 "Reset" | 调用 `setNumber(uint256)`，仅 owner 可执行 |
-| 查看交易 | 点击 tx hash 链接 | 跳转 Monad 测试网浏览器 |
+1. **Monad-native**：Moss 是为 Monad 设计的 Agent × DeFi 交互层，与本课程的 Monad Builder 方向高度契合。
+2. **Agent 协议真实场景**：它解决的是 AI Agent 如何安全地调用链上协议——这正是 Week 3 组队可能深入的方向。
+3. **可贡献开源**：Moss 的协议适配器（Protocol Adapter）采用模板化设计，是 Dev Builder 可以落地的明确贡献入口。
+4. **与 PactGuard 可组合**：Moss 负责 `discover → load → action → simulate`，PactGuard 负责签名前的预算/白名单/频率检查，两者可构成完整的 Agent 交易安全栈。
 
 ---
 
-## 3. 技术架构
+## 2. 项目一句话
+
+**在本地跑通 Moss 仓库，完成 `discover → load → action → simulate` 完整流程，并产出一份可复用的协议适配器贡献模板/文档改进 PR。**
+
+> 原先的“MonadTally 计数器 Demo”替换为 Moss 深度学习 + 实际开源贡献准备，以匹配实习计划的强度。
+
+---
+
+## 3. 用户/开发者动作
+
+| 动作 | 输入 | 结果 |
+|------|------|------|
+| 克隆与构建 | `git clone moss` + `pnpm install` + `pnpm -r build` | 本地可运行的 Moss 仓库 |
+| 跑通示例 | `pnpm --filter @themoss/example-simple-flow exec tsx src/wmon-wrap.ts` | 完成 discover/load/action/simulate 闭环，无 warnings |
+| 阅读核心模块 | `packages/core`、`packages/simulator`、`packages/protocols/_template` | 理解 Plan、expects、simulate 的安全设计 |
+| 试写适配器 | 复制 `_template`，填充一个简单的读取或转账能力 | 一个可编译通过的适配器草稿 |
+| 贡献准备 | 根据学习体会，提交文档改进 PR 或 Issue | 一份真实的开源贡献证据 |
+
+---
+
+## 4. 技术架构
 
 ```
 ┌─────────────────────────────────────┐
-│          Frontend (Next.js)         │
-│  React + Tailwind + viem + RainbowKit│
-└──────────────┬──────────────────────┘
-               │
-┌──────────────▼──────────────────────┐
-│         Wallet (MetaMask/Rabby)     │
-│     Sign tx for Monad Testnet       │
-└──────────────┬──────────────────────┘
-               │
-┌──────────────▼──────────────────────┐
-│      Monad Testnet (EVM-compatible) │
-│      Counter.sol (Solidity 0.8.x)   │
+│        Moss Repository (Local Clone)        │
+│  ┌────────────┐  ┌─────────────┐  ┌─────────────┐ │
+│  │ @themoss/core │  │ @themoss/simulator │  │ protocol adapter │ │
+│  │ (装饰器/Plan)  │  │ (debug_traceCall) │  │ (_template)      │ │
+│  └────┬─────┘  └───────┬──────┘  └───────┬──────┘ │
+│       │                │                    │                  │
+│       └─────────────────┬─────────────────┘                  │
+│                        │                                       │
+│       ┌─────────────────────────────────────┐         │
+│       │ @themoss/mcp-server (4 tools: discover/load/action/simulate) │         │
+│       └─────────────────────────────────────┘         │
 └─────────────────────────────────────┘
+                           │
+                           ▼
+                Monad Mainnet RPC (simulation only)
 ```
 
 ---
 
-## 4. 技术组件清单
+## 5. 技术组件清单
 
-| 层级 | 组件 | 选择理由 | 是否本周实现 |
-|------|------|---------|------------|
-| 合约 | `Counter.sol` | 最小可运行状态合约，含 owner 权限 | ✅ 真实实现 |
-| 合约测试 | Foundry test | 验证 owner 权限、increment/setNumber 逻辑 | ✅ 真实实现 |
-| 部署脚本 | Foundry script (`Counter.s.sol`) | 一键部署到 Monad testnet | ✅ 真实实现 |
-| 前端框架 | Next.js 14 (App Router) | 与 Week 3 组队栈一致 | ✅ 真实实现 |
-| 钱包连接 | RainbowKit + wagmi | 降低钱包适配成本 | ✅ 真实实现 |
-| 链交互 | viem | ESM-native，类型安全，配合 wagmi | ✅ 真实实现 |
-| UI 样式 | Tailwind CSS | 快速、轻量、无需设计系统 | ✅ 真实实现 |
-| 网络配置 | Monad Testnet RPC | 使用官方或社区 RPC | ✅ 真实实现 |
-| 水龙头 | Monad Faucet | 获取测试 MON 用于部署/交易 | ✅ 真实实现 |
-| 多链支持 | Sepolia fallback | 若 Monad 测试网不可用，先用 Sepolia 验证 | 🟡 可选 fallback |
-| CI/CD | Vercel deploy | 部署前端页面，生成可访问链接 | 🟡 本周尽量做 |
-| 复杂权限 | Role-based access control | 超出最小 Demo 范围 | ❌ 本周不做 |
-| 后端服务 | Node/FastAPI API | 不需要读取任何链下状态 | ❌ 本周不做 |
-| 多合约交互 | Factory / Proxy pattern | 超出本周 scope | ❌ 本周不做 |
+| 层级 | 组件 | 状态 | 说明 |
+|------|------|------|------|
+| 运行环境 | Node ≥ 22 + pnpm | ✅ 已就绪 | 本机 Node 22.22.2, pnpm 11.1.1 |
+| 代码库 | `nishuzumi/moss` clone | ✅ 已完成 | 位于 `experiments/moss/` |
+| 构建 | `pnpm -r build` | ✅ 已通过 | 全部 package build success |
+| 测试 | `MOSS_SKIP_E2E=1 pnpm -r test` | ✅ 已通过 | 12 passed, 7 skipped |
+| 示例验证 | `wmon-wrap.ts` | ✅ 已跑通 | discover/load/action/simulate 无 warnings |
+| 核心阅读 | core / simulator / _template | 🟡 进行中 | 本周重点 |
+| 适配器草稿 | 基于 `_template` 的一个能力 | ⏳ 本周实现 | 可编译即可，不强求 PR 合并 |
+| 开源贡献 | 文档 PR / Issue / Demo | ⏳ 尽力而为 | 作为 Bonus 积分 |
+| 签名发交易 | 真实钱包调用 | ❌ 本周不做 | Moss 设计原则不允许此行为 |
+| 新协议完整适配 | 如 Uniswap / Aave | ❌ 本周不做 | 需要大量 ABI/测试/状态跟踪 |
+| 自定义 MCP Server | 扩展工具 | ❌ 本周不做 | 先用现有 server |
 
 ---
 
-## 5. 要读的文档（按优先级）
+## 6. 要读的文档（按优先级）
 
 | 优先级 | 文档 | 用途 |
 |-------|------|------|
-| P0 | [Monad Developer Docs](https://docs.monad.xyz/) | RPC、Faucet、网络信息 |
-| P0 | [Foundry Book](https://book.getfoundry.sh/) | 编译、测试、部署脚本 |
-| P0 | [viem docs](https://viem.sh/) | 合约读取/写入、交易构造 |
-| P0 | [wagmi + RainbowKit docs](https://www.rainbowkit.com/docs) | 钱包连接配置 |
-| P1 | [Solidity 0.8.x docs](https://docs.soliditylang.org/) | owner 权限、事件定义 |
-| P1 | [Next.js App Router](https://nextjs.org/docs) | 前端路由与客户端组件边界 |
-| P2 | [EIP-1193](https://eips.ethereum.org/EIPS/eip-1193) | 理解 Provider 接口（可选） |
+| P0 | Moss README / getting-started.md | 整体架构与快速上手 |
+| P0 | docs/mcp-tools.md | 四个工具的输入输出契约 |
+| P0 | docs/agent-skill.md | Agent 使用 Moss 的安全规则 |
+| P0 | packages/protocols/_template/README.md | 适配器开发 checklist |
+| P1 | docs/adr/0002-simulation-via-debug-tracecall.md | 为什么用 debug_traceCall |
+| P1 | docs/adr/0004-quantified-expects-in-plans.md | Plan 中 expects 的安全设计 |
+| P1 | docs/adr/0006-protocol-packages-and-manifests.md | 为什么一个协议一个 package |
+| P1 | packages/system/src/wmon.ts | 参考适配器实现 |
+| P2 | docs/protocol-onboarding.md | 完整贡献流程 |
+| P2 | CONTEXT.md | 项目术语表 |
 
 ---
 
-## 6. 真实实现 / Mock / 本周不做
+## 7. 真实实现 / Mock / 本周不做
 
-### 6.1 真实实现（必须跑通）
+### 7.1 真实实现（必须跑通）
 
-- [ ] `Counter.sol` 合约编写与本地 Foundry 测试通过
-- [ ] 使用 Foundry script 部署到 Monad Testnet，记录真实 contract address + deploy tx hash
-- [ ] 最小 Next.js 前端：连接钱包、读取计数、调用 `increment()`、显示 tx hash
-- [ ] GitHub repo 提交，含 README（运行步骤、合约地址、截图）
+- [x] 克隆 Moss 仓库并安装依赖
+- [x] 本地构建通过
+- [x] 本地离线测试通过
+- [x] 跑通 `wmon-wrap.ts` 示例（live mainnet simulation）
+- [ ] 阅读 `_template` 并试写一个简单适配器草稿
+- [ ] 整理学习笔记 + 贡献准备
 
-### 6.2 Mock / Fallback
+### 7.2 Mock / Fallback
 
-- 如果 Monad Faucet 暂时不可用：先用本地 Anvil 运行完整流程，再迁移到 Monad。
-- 如果 RainbowKit 配置遇到 Monad 链不支持的问题：改用 viem 自定义 chain + 原生 MetaMask 调用。
-- 如果 Vercel 部署失败：保留本地 `npm run dev` 录屏作为证明。
+- 如果 live RPC `debug_traceCall` 受限：切换到 `rpc4.monad.xyz` 或 `monad-rpc.huginn.tech`。
+- 如果无法上网：使用 `MOSS_SKIP_E2E=1` 跑离线测试保持进度。
+- 适配器草稿可以只实现一个简单 query（如 `balanceOf`），不强求完整 capability。
 
-### 6.3 本周不做
+### 7.3 本周不做
 
-- 不实现多用户权限、不计入复杂业务逻辑。
-- 不接入真实支付、Agent Wallet、Escrow 等 Week 3 方向。
-- 不做移动端适配、不做动画、不做 dark mode。
-- 不做单元测试覆盖率报告、不做 CI pipeline。
+- 不签名、不发送任何交易（这也是 Moss 的设计原则）。
+- 不完整实现一个新协议（如 Uniswap/Aave），因需要大量状态跟踪和测试。
+- 不写自定义 MCP server，先使用现有 `moss-mcp`。
+- 不做移动端 UI、不做 Demo 录屏（保留给 Week 3）。
 
 ---
 
-## 7. AI 与人工分工
+## 8. AI 与人工分工
 
 | 任务 | AI 负责 | 人类负责 |
 |------|--------|---------|
-| 合约代码 | 生成 `Counter.sol` 骨架 | review owner 逻辑、运行测试 |
-| Foundry 脚本 | 生成部署脚本模板 | 配置私钥/环境变量、执行部署 |
-| 前端代码 | 生成 RainbowKit + viem 调用组件 | 调整 UI、验证交易 |
-| README | 生成结构 | 填入真实 contract address 和 tx hash |
-| 部署决策 | 提供 RPC/Faucet 建议 | 最终选择网络、执行真实部署 |
-| 私钥/助记词 | ❌ 绝不接触 | 独立管理 .env |
+| 仓库构建 | 辅助解读构建错误 | 执行 install/build/test |
+| 文档阅读 | 摘要 ADR / 核心概念 | 验证理解并形成自己的语言 |
+| 示例调试 | 解释错误信息、提供排查步骤 | 执行并验证输出 |
+| 适配器草稿 | 基于 `_template` 生成初版 | review 语义正确性、风险声明 |
+| 贡献 PR | 起草 PR 描述 | 确认事实、审阅格式、提交 |
+| RPC/环境配置 | 提供备选 | 最终选择并验证 |
 
 ---
 
-## 8. 验收标准
+## 9. 验收标准
 
-- [ ] `forge test` 本地通过。
-- [ ] Monad Testnet 上存在已部署的 `Counter` 合约地址。
-- [ ] 前端可连接钱包，点击 +1 后生成真实 tx hash 并在链上确认。
-- [ ] README 包含：运行步骤、合约地址、部署 tx hash、前端截图/链接。
-- [ ] AI Collaboration Log 更新 Day 2 协作记录。
-
----
-
-## 9. 风险提示
-
-| 风险 | 影响 | 应对 |
-|------|------|------|
-| Monad Testnet RPC 不稳定 | 部署/读取失败 | 切 Anvil 本地或 Sepolia fallback |
-| Faucet 限额/不可用 | 无测试 MON | 本地 Anvil 验证，或申请社区 faucet |
-| RainbowKit 不支持 Monad chain | 钱包连接报错 | 改用 viem custom chain + wagmi |
-| 私钥误提交到 GitHub | 资金损失 | 使用 `.env` + `.gitignore`，AI 不接触私钥 |
-| Scope 蔓延 | 做不完 Demo | 严格遵守「本周不做」清单 |
+- [x] `pnpm install` 成功
+- [x] `pnpm -r build` 成功
+- [x] `MOSS_SKIP_E2E=1 pnpm -r test` 通过
+- [x] `wmon-wrap.ts` 跑通并输出 "No warnings"
+- [ ] 阅读完 `_template` 和 `wmon.ts`
+- [ ] 产出一份学习笔记 / 贡献准备
+- [ ] 更新 Role Log 与 AI Collaboration Log Day 2 记录
 
 ---
 
-## 10. 下一步
+## 10. 与 Week 3 的衔接
 
-1. Day 2 下午：初始化 Foundry 项目，写 `Counter.sol` + test。
-2. Day 3：配置 Monad Testnet，完成首次部署。
-3. Day 4：搭建 Next.js 前端，实现读取与写入。
-4. Day 5：整理 README、截图/录屏、提交 Portfolio。
+| Week 2 产出 | Week 3 可用于 |
+|------------|-------------|
+| Moss 本地跑通 + 示例验证 | 团队可直接使用或扩展 Moss 做 Agent 交易 Demo |
+| 适配器模板理解 | 可以承接新协议适配器开发任务 |
+| simulate 安全模型理解 | 与 PactGuard 的签名前检查组成双层安全门 |
+| 学习笔记 | 作为团队技术调研和贡献证据 |
+
+---
+
+## 9642; 附录：本地验证记录
+
+```bash
+# 克隆与构建
+$ git clone https://github.com/nishuzumi/moss.git experiments/moss
+$ cd experiments/moss
+$ pnpm install
+$ pnpm -r build
+$ MOSS_SKIP_E2E=1 pnpm -r test
+
+# 跑通示例（live mainnet simulation, 零资金）
+$ pnpm --filter @themoss/example-simple-flow exec tsx src/wmon-wrap.ts
+# 输出: ✓ No warnings — the unsigned txs may be handed to a wallet for review.
+```
