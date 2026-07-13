@@ -14,7 +14,7 @@
 
 ## 每日记录
 
-### 2026-07-13（Day 1）
+### 2026-07-13（Day 1）｜职业方向选择
 
 #### 学习内容
 
@@ -49,12 +49,46 @@
 
 #### 下一步计划
 
-- Day 2：在 `experiments/week-02-contract/` 初始化 Foundry 项目，编写第一个合约并通过测试。
+- Day 2：把职业方向变成可执行 Scope，输出 Dev Plan。
 - Day 3：确认 Monad 测试网 RPC 与 Faucet，完成首次部署。
 - Day 4：搭建最小前端页面，实现钱包连接与合约读取。
 - Day 5：实现前端写入交易，并记录交易哈希。
 - Day 6：整理 Demo 文档、截图/录屏，准备 Week 3 组队素材。
 - Day 7：复盘 Week 2，更新 Role Log 终版。
+
+---
+
+### 2026-07-14（Day 2）｜把职业方向变成可执行 Scope
+
+#### 学习内容
+
+| 资料/链接 | 类型 | 收获 |
+|-----------|------|------|
+| Week 2 Day 2 任务说明（当前项目 `tasks/week-02-tech.md`） | 课程任务 | 明确 Day 2 目标：把职业方向变成一个可执行 Scope |
+| Foundry Book https://book.getfoundry.sh/ | 开发文档 | 复习合约编译、测试、部署脚本写法 |
+| viem docs https://viem.sh/ | 前端/链交互 | 确认 React 中读取/写入合约的标准方式 |
+| RainbowKit docs https://www.rainbowkit.com/docs | 钱包连接 | 确认 Monad 等自定义链的钱包适配方案 |
+
+#### 使用过的 Prompt（示例）
+
+> 「我是 Dev 方向，本周要完成一个基于 Foundry 管理、带前端页面的最小 Demo。请帮我定义 Scope、Architecture、Tech Stack，并明确真实实现 / mock / 本周不做的边界。」
+
+#### 遇到的问题 / 错误
+
+- 暂无技术错误。Day 2 完成 Scope 定义，尚未进入编码。
+
+#### 判断变化
+
+- 决定最小 Demo 不是留言板或 Escrow，而是**最简单的链上计数器 + 前端页面**，先把 Monad Testnet 部署/交互闭环跑通。
+- 保留 Escrow / Agent Wallet / PactGuard 作为 Week 3 组队方向的扩展 backlog。
+
+#### 今日产出
+
+- `submissions/week-02-tech/dev-plan.md`
+
+#### 下一步计划
+
+- Day 2 下午 / Day 3：初始化 Foundry 项目，编写 `Counter.sol` + test，配置 Monad Testnet RPC。
 
 ---
 
@@ -68,6 +102,8 @@
 | Hardhat Docs | https://hardhat.org/docs | 备用工具链 |
 | Cursor Docs | https://docs.cursor.com/ | AI Coding 工作流 |
 | GitHub Docs | https://docs.github.com/ | 协作流程 |
+| viem docs | https://viem.sh/ | 前端链交互 |
+| RainbowKit docs | https://www.rainbowkit.com/docs | 钱包连接适配 |
 
 ---
 
