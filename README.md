@@ -15,6 +15,8 @@
 - **DevRel 成长之路完整转录**: `docs/devrel-growth-transcript.md`
 - **Monad 技术笔记**: `docs/monad-technical-notes.md`
 - **Web3Career 平台入口记录**: `docs/web3career-platform.md`
+- **LXDAO × GoPlus AI Agent 安全分享笔记**: `docs/ai-agent-security-lxdao.md`
+- **LXDAO × GoPlus AI Agent 安全分享完整转录**: `docs/ai-agent-security-lxdao-transcript.md`
 - **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
 ---
@@ -64,6 +66,8 @@
 │   ├── devrel-growth-transcript.md # DevRel 成长之路完整转录
 │   ├── monad-technical-notes.md # Monad 技术学习笔记（基于 Box 分享）
 │   ├── web3career-platform.md # Web3Career 概览页与学习面板入口记录
+│   ├── ai-agent-security-lxdao.md # LXDAO × GoPlus AI Agent 安全分享笔记
+│   ├── ai-agent-security-lxdao-transcript.md # LXDAO × GoPlus AI Agent 安全分享完整转录
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
