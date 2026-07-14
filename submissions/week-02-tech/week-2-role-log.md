@@ -69,15 +69,22 @@
 | docs/mcp-tools.md | 工具契约 | 确认 discover/load/action/simulate 的输入输出 |
 | docs/agent-skill.md | Agent 安全 | 明确必须 simulate 后才能给用户/签名者 |
 | packages/protocols/_template | 贡献入口 | 了解一个 protocol adapter 的最小结构 |
+| Moss GitHub Issues / Pull Requests | 开源协作 | 理解 Maintainer 如何用标签、模板、CI 和 Review 管理贡献 |
+| Issue #13：ERC-4626 tokenized vaults | 设计议题 | 认识到通用接口层需要先解决实例化方式、verb 与 share / asset expects |
+| PR #19：preserve LF line endings | Bugfix / PR | 学到应保留严格测试约束并消除跨平台根因，而不是放宽断言 |
 
 #### 使用过的 Prompt（示例）
 
 > 「我是 Dev 方向，本周想深入学习并贡献 nishuzumi/moss。请帮我定义一个最小 Scope，包括本地构建、示例验证、核心模块阅读、适配器草稿、贡献准备，并明确本周不做的边界。」
 
+> 「基于 Moss 的 README、Docs、Issues、Pull Requests 和目录结构，整理一份 GitHub Exploration Log，并区分已经核验的事实、个人判断与下一步贡献设想。」
+
 #### 遇到的问题 / 错误
 
 - 问题：按文档运行 `pnpm --filter @themoss/example-simple-flow exec tsx src/play.ts` 报错，因为 `src/play.ts` 不存在。
 - 解决：通过 `find` 查找实际示例文件，改用 `src/wmon-wrap.ts` 成功跑通。
+- 发现：任务要求查看 Discussions，但 Moss 当前未启用该模块；日志中如实记录「未启用」，不虚构讨论内容。
+- 协作观察：PR #17 因分支混入上游提交被 Maintainer 要求 rebase，说明提交历史整洁也是贡献质量的一部分。
 
 #### 判断变化
 
@@ -89,13 +96,19 @@
 - 本地跑通 Moss：`pnpm install` / `pnpm -r build` / `MOSS_SKIP_E2E=1 pnpm -r test` 通过
 - 验证示例 `wmon-wrap.ts` 输出 `✓ No warnings`
 - 重写 `submissions/week-02-tech/dev-plan.md` 为 Moss 强化版
+- 完成 `submissions/week-02-tech/moss-project-introduction.md`
+- 完成 `submissions/week-02-tech/github-exploration-log-moss.md`
+- 完成 `submissions/week-02-tech/moss-open-source-contribution-plan.md`
+- 生成 Contribution Plan 的 HTML、PNG 与单页 PDF 提交证据包
+- 完成 `daily/2026-07-14.md`
 
 #### 下一步计划
 
-- Day 2 下午 / Day 3：逐行阅读 `packages/core`、`packages/simulator`、`_template`、`wmon.ts`。
-- Day 3 下午：试写一个简单的 query/capability 草稿。
-- Day 4：根据学习体会，确定一个可贡献的文档/测试/adapter 改进点。
-- Day 5：整理 Portfolio Pack 与 Week 3 Role Statement。
+- Day 3：在 Issue #13 对齐首个 PR 边界，阅读 ADR 0007 / 0009。
+- Day 4：完成 `IERC4626.sol → ERC4626Abi` 编译链、导出与 focused tests。
+- Day 5：用 MockVault 做对照验证，补文档、changeset 与质量门证据。
+- Day 6：自审 diff 和提交历史，提交 Draft PR。
+- Day 7：回应 Review，整理技术笔记与 Week 3 Portfolio Pack。
 
 ---
 

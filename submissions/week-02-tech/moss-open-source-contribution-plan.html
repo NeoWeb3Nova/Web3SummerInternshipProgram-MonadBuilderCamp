@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moss Open Source Contribution Plan — Neo</title>
+<style>
+:root{--ink:#172033;--text:#344057;--muted:#69748b;--line:#dfe4ee;--accent:#4f46e5;--soft:#f5f6ff;--ok:#176b52}
+*{box-sizing:border-box} @page{size:A4;margin:12mm 14mm}
+body{margin:0;background:#eef1f6;color:var(--ink);font-family:Inter,"PingFang SC","Noto Sans SC","Microsoft YaHei",sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+main{width:820px;margin:28px auto;padding:50px 58px;background:#fff;box-shadow:0 12px 40px rgba(23,32,51,.08)}
+.eyebrow{color:var(--accent);font-size:12px;font-weight:800;letter-spacing:.09em;text-transform:uppercase}
+h1{margin:8px 0 8px;font-size:30px;line-height:1.25}.meta{display:flex;gap:16px;flex-wrap:wrap;padding-bottom:16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px}
+.hero{margin:18px 0;padding:15px 18px;border-left:4px solid var(--accent);background:var(--soft)}.hero strong{display:block;margin-bottom:4px;font-size:17px}.hero p{margin:0;font-size:12.5px;line-height:1.65;color:var(--text)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.card{padding:14px 16px;border:1px solid var(--line);border-radius:10px;break-inside:avoid}.card.wide{grid-column:1/-1}
+h2{margin:0 0 8px;font-size:14px;color:var(--ink)}p,li,td,th{font-size:11.5px;line-height:1.58;color:var(--text)}ul{margin:0;padding-left:18px}li+li{margin-top:3px}
+.tag{display:inline-block;margin:0 5px 5px 0;padding:3px 8px;border-radius:999px;background:#eef0ff;color:var(--accent);font-size:10px;font-weight:700}
+table{width:100%;border-collapse:collapse}th,td{padding:6px 7px;border-top:1px solid var(--line);text-align:left;vertical-align:top}th{color:var(--muted);font-size:10.5px}.success{color:var(--ok);font-weight:800}
+footer{margin-top:18px;padding-top:12px;border-top:1px solid var(--line);display:flex;justify-content:space-between;color:var(--muted);font-size:10px}
+@media print{body{background:#fff}main{width:auto;margin:0;padding:0;box-shadow:none}h1{font-size:23px}.meta{font-size:9.5px;padding-bottom:10px}.hero{margin:11px 0;padding:9px 12px}.hero strong{font-size:13px}.hero p,p,li,td{font-size:8.7px;line-height:1.42}.grid{gap:8px}.card{padding:8px 10px;border-radius:6px}h2{margin-bottom:4px;font-size:10.5px}.tag{font-size:7.5px;padding:2px 5px}th{font-size:8px}th,td{padding:3px 4px}footer{margin-top:8px;padding-top:6px;font-size:7.5px}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">Week 2 · Open Source Challenge</div>
+<h1>Moss Open Source Contribution Plan</h1>
+<div class="meta"><span>Neo</span><span>Dev Builder（Tech）</span><span>2026-07-14 — 2026-07-19</span><span>nishuzumi/moss · Issue #13</span></div>
+<div class="hero"><strong>贡献方向：ERC-4626 Interface Layer 基础能力</strong><p>先完成可独立合并的最小 PR：IERC4626.sol → 编译生成 ERC4626Abi → @mossxyz/erc 导出 → 测试与文档 → Draft PR。现有 MockVault 仅作为本地验证夹具，通用行为等待 Maintainer 设计确认。</p></div>
+<div class="grid">
+<section class="card"><h2>Builder 身份与选择理由</h2><span class="tag">Dev / Tech</span><span class="tag">TypeScript</span><span class="tag">Solidity ABI</span><span class="tag">Testing</span><ul><li>已阅读 core、simulator、erc、_template 与 wmon.ts。</li><li>已有可编译、可测试的 MockVault Adapter 草稿。</li><li>Issue #13 是 Maintainer 明确提出的真实上游需求。</li><li>先做 ABI 基础，技术信号强且范围可控。</li></ul></section>
+<section class="card"><h2>本周必须完成</h2><ul><li>在 Issue #13 对齐首个 PR 边界。</li><li>建立可追溯的 IERC4626 ABI 编译生成链。</li><li>导出 ERC4626Abi，不引入具体链地址。</li><li>增加 provenance、函数/事件与导出测试。</li><li>补文档、changeset 和真实验证日志。</li><li>提交历史干净的 Draft PR。</li></ul></section>
+<section class="card wide"><h2>完成计划</h2><table><tr><th>日期</th><th>工作重点</th><th>可检查结果</th></tr><tr><td>07-14</td><td>确定 Issue 与最小贡献范围</td><td>Contribution Plan</td></tr><tr><td>07-15</td><td>阅读 ADR 0007 / 0009，在 Issue 对齐</td><td>Issue 回复、实现分支</td></tr><tr><td>07-16</td><td>实现 ABI 编译链、导出与 focused tests</td><td>小步 commits、测试结果</td></tr><tr><td>07-17</td><td>MockVault 对照验证、文档与 changeset</td><td>Plan / expects 记录</td></tr><tr><td>07-18</td><td>build → typecheck → lint → tests；自审</td><td>验证日志、干净 diff</td></tr><tr><td>07-19</td><td>提交 Draft PR、回应 Review、复盘</td><td>PR 链接、技术笔记</td></tr></table></section>
+<section class="card"><h2>预计产出</h2><ul><li>Issue #13 Scope 对齐评论</li><li>ABI 基础实现与自动化测试</li><li>build / typecheck / lint / test 证据</li><li>Draft Pull Request</li><li>设计取舍与失败记录</li><li>可选：MockVault 对照实验</li></ul></section>
+<section class="card"><h2>边界与风险控制</h2><ul><li>不直接接入 Morpho / Euler 完整协议。</li><li>不在 erc 层写入具体 Vault 地址。</li><li>设计未确认前不实现完整通用 Adapter。</li><li>不手写 ABI、不放宽测试、不触碰签名。</li><li>先 Issue 对齐；大功能拆成后续 PR。</li></ul></section>
+<section class="card wide"><h2>成功标准</h2><p><span class="success">成功不等于本周必须合并。</span>本周完成标准是：贡献范围已对齐、实现可复现、测试可验证、PR 边界单一且 Maintainer 容易审查。AI 只协助检索、测试骨架与日志整理；架构判断、ABI 来源、安全语义、真实执行与上游沟通由我人工负责。</p></section>
+</div>
+<footer><span>Web3 Summer Internship Program · Monad Builder Camp</span><span>github.com/nishuzumi/moss/issues/13</span></footer>
+</main></body></html>
