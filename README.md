@@ -16,6 +16,7 @@
 - **Monad 技术笔记**: `docs/monad-technical-notes.md`
 - **Web3Career 平台入口记录**: `docs/web3career-platform.md`
 - **LXDAO × GoPlus AI Agent 安全分享笔记**: `docs/ai-agent-security-lxdao.md`
+- **AgentGuard 实现概览**: `docs/agentguard-implementation-overview.md`
 - **LXDAO × GoPlus AI Agent 安全分享完整转录**: `docs/ai-agent-security-lxdao-transcript.md`
 - **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
@@ -63,10 +64,11 @@
 │   ├── opening-ceremony.md # 开营仪式纪要（完整修复后字幕整理）
 │   ├── opening-ceremony-transcript.md # 开营仪式完整转录
 │   ├── devrel-growth.md # DevRel 成长之路分享会纪要
-│   ├── devrel-growth-transcript.md # DevRel 成长之路完整转录
+│   ├── devrel-growth-transcript.md # DevRel 成长之路分享会完整转录
 │   ├── monad-technical-notes.md # Monad 技术学习笔记（基于 Box 分享）
 │   ├── web3career-platform.md # Web3Career 概览页与学习面板入口记录
 │   ├── ai-agent-security-lxdao.md # LXDAO × GoPlus AI Agent 安全分享笔记
+│   ├── agentguard-implementation-overview.md # AgentGuard 实现概览
 │   ├── ai-agent-security-lxdao-transcript.md # LXDAO × GoPlus AI Agent 安全分享完整转录
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
@@ -99,24 +101,20 @@
 └── scripts/               # 自动化脚本
 ```
 
-## 快速开始
+## 快速入口
 
-1. 确认已报名: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=overview
-2. 每天打开学习面板查看当天任务: https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=learning
-3. 阅读 `docs/opening-ceremony.md` 了解开营仪式详情（如需逐字稿见 `docs/opening-ceremony-transcript.md`）
-4. 阅读 `docs/overview.md`、`docs/schedule.md` 和 `docs/monad-technical-notes.md`
-5. 从 `tasks/week-01.md` 开始第一周任务
-6. 每天在 `daily/YYYY-MM-DD.md` 记录打卡与学习
+- [活动官网与报名](https://x.com/LXDAO_Official/status/2066328174963933518)
+- [Web3Career 学习面板](https://web3career.build/zh/programs/Web3-Summer-Intership-Progra?tab=learning)
+- [Monad 官方文档](https://docs.monad.xyz/)
 
-## 目标交付物
+## 贡献与记录原则
 
-- [ ] 一个可运行的链上产品 Demo
-- [ ] 一个完整的 GitHub Repo
-- [ ] 一份记录 AI 协作过程的 Build Log
-- [ ] 一份研究 / 运营 / 技术材料
-- [ ] 一页 Portfolio Page
-- [ ] 一次 Hackathon 提交经验
+- 每日学习记录提交到 `daily/YYYY-MM-DD.md`。
+- 每周交付物提交到 `submissions/week-<N>/`。
+- 代码实验和 PoC 放到 `experiments/`。
+- 关键分享会笔记和完整转录放到 `docs/`。
+- 每次重大更新后及时 `git commit` 并 `git push`。
 
 ---
 
-*本项目遵循 document-first 流程：先写文档/计划，再执行，最后提交。*
+有任何问题或建议，欢迎在本仓库提 Issue 或直接修改提交。
