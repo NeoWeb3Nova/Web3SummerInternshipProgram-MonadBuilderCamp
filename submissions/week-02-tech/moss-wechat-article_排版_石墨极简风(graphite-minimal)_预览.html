@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>moss-wechat-article_排版_石墨极简风(graphite-minimal) · 公众号排版预览</title>
+<style>
+  body{margin:0;background:#eef0f2;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;-webkit-text-size-adjust:100%;}
+  .gzh-toolbar{position:fixed;top:0;left:0;right:0;height:54px;background:#ffffff;box-shadow:0 1px 10px rgba(0,0,0,.08);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:99;}
+  .gzh-hint{font-size:13px;color:#6b7280;line-height:1.4;}
+  .gzh-hint b{color:#111827;}
+  .gzh-copy{background:#059669;color:#fff;border:0;border-radius:9px;padding:10px 20px;font-size:14px;font-weight:700;cursor:pointer;box-shadow:0 3px 10px rgba(5,150,105,.28);white-space:nowrap;transition:transform .08s,background .15s;}
+  .gzh-copy:hover{background:#047857;}
+  .gzh-copy:active{transform:translateY(1px);}
+  .gzh-toast{position:fixed;top:66px;left:50%;transform:translateX(-50%);background:#111827;color:#fff;padding:11px 20px;border-radius:10px;font-size:14px;font-weight:600;opacity:0;pointer-events:none;transition:opacity .25s;z-index:100;box-shadow:0 6px 20px rgba(0,0,0,.25);max-width:88vw;text-align:center;}
+  .gzh-toast.show{opacity:1;}
+  .gzh-stage{max-width:700px;margin:78px auto 64px;padding:0 8px;}
+  @media(max-width:520px){.gzh-hint{max-width:150px;}}
+</style>
+</head>
+<body>
+<div class="gzh-toolbar">
+  <span class="gzh-hint">👇 下方是排版效果 · 点右侧 <b>复制</b> 直接粘到公众号</span>
+  <button class="gzh-copy" id="gzhCopyBtn" onclick="gzhCopy()">📋 复制到公众号</button>
+</div>
+<div class="gzh-toast" id="gzhToast"></div>
+<div class="gzh-stage">
+  <div id="gzh-content">
+<section style="max-width:677px;margin:0 auto;background:#FFFFFF;font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif;color:#52525B;line-height:1.8;letter-spacing:0.3px;overflow-x:hidden;">
+<section style="margin:10px 10px 40px;padding:32px 24px 24px;border-top:1px solid #E4E4E7;border-bottom:1px solid #E4E4E7;background:#FFFFFF;">
+<p style="font-size:11px;color:#A1A1AA;letter-spacing:2px;margin:0 0 18px;font-weight:400;"><span leaf="">QUOTE</span></p>
+<p style="font-size:18px;font-weight:700;color:#27272A;margin:0 0 8px;line-height:1.7;letter-spacing:0.5px;"><span leaf="">AI Agent 可以理解「帮我把 1 MON 换成 USDC」，但理解一句话，不等于能安全地完成一笔链上交易。Moss 真正解决的，不是让 Agent 更快发交易，而是让每一笔交易在签名前都可构建、可解释、可模拟、可叫停。</span></p>
+<p style="text-align:right;font-size:12px;color:#A1A1AA;margin:16px 0 0;letter-spacing:1px;"><span leaf="">—— Neo</span></p>
+</section>
+<section style="padding:0 10px 40px;">
+<p style="font-size:11px;color:#A1A1AA;margin:0 0 16px;letter-spacing:2px;"><span leaf="">本文看点</span></p>
+<section style="display:flex;justify-content:space-between;">
+<section style="flex:1;background:#FAFAFA;border-top:1px solid #E4E4E7;padding:18px 12px 16px;margin-right:8px;"><p style="font-size:11px;color:#A1A1AA;font-weight:500;margin:0 0 8px;"><span leaf="">01</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.5;"><span leaf="">Moss 解决什么问题</span></p></section>
+<section style="flex:1;background:#FAFAFA;border-top:1px solid #E4E4E7;padding:18px 12px 16px;margin-right:8px;"><p style="font-size:11px;color:#A1A1AA;font-weight:500;margin:0 0 8px;"><span leaf="">02</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.5;"><span leaf="">Plan 如何被验证</span></p></section>
+<section style="flex:1;background:#FAFAFA;border-top:1px solid #E4E4E7;padding:18px 12px 16px;"><p style="font-size:11px;color:#A1A1AA;font-weight:500;margin:0 0 8px;"><span leaf="">03</span></p><p style="font-size:13px;font-weight:700;color:#27272A;margin:0;line-height:1.5;"><span leaf="">为什么 Agent 需要它</span></p></section>
+</section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">如果你对 AI Agent 说：</span></p>
+<section style="border-left:3px solid #52525B;padding:16px 0 16px 24px;margin:0 10px 28px;"><p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.7;letter-spacing:0.5px;"><span leaf="">「帮我在 Monad 上把 1 MON 换成 USDC。」</span></p></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这句话对人很简单，对执行系统却一点也不简单。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Agent 必须知道应该调用哪个协议、合约地址是否正确、原生 MON 是否需要包装、代币有多少位小数、是否需要授权、授权给谁、最多授权多少、滑点如何限制，以及一组交易执行后究竟发生了哪些资产变化。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">传统 Agent 很擅长生成文本，也可以调用工具，但链上交易容不得「大概正确」。一个错误地址、一次无限授权、一处精度换算错误，或者一笔没有被发现的额外资金流，都可能造成不可逆损失。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这正是 Moss 想解决的问题。</span></p>
+<section style="margin-top:16px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">01</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">DEFINITION</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">一、Moss 是什么？</span></h3>
+</section></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 是一个面向 Monad 的 AI Agent 链上</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">协议能力层</span></span><span leaf="">。它把不同 DApp 和协议的复杂交互，抽象成 Agent 可以统一调用的能力：</span></p>
+<section style="margin:0 10px 20px;border-radius:8px;overflow:hidden;background:#1E293B;box-shadow:0 4px 16px -8px rgba(15,23,42,0.4);">
+<section style="display:flex;align-items:center;padding:9px 14px;background:#0F172A;">
+<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF5F56;margin-right:7px;font-size:0;line-height:0;overflow:hidden;"><span leaf="">•</span></span>
+<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFBD2E;margin-right:7px;font-size:0;line-height:0;overflow:hidden;"><span leaf="">•</span></span>
+<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27C93F;font-size:0;line-height:0;overflow:hidden;"><span leaf="">•</span></span>
+<span style="margin-left:12px;font-size:12px;color:#64748B;font-family:Consolas,Monaco,monospace;letter-spacing:1px;"><span leaf="">text</span></span>
+</section><section style="padding:11px 14px;"><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">discover → load → action → simulate</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">它让 Agent 不再直接拼装 ABI、合约地址、calldata、multicall 和代币精度，而是用人类可读的参数表达意图，由协议适配器构建未签名交易，再由模拟器验证实际效果。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 的</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">职责边界</span></span><span leaf="">非常明确：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">构建交易，但不签名；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">模拟交易，但不发送；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">提取</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">真实 effects</span></span><span leaf="">，但不替用户做最终决定；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">发现 warning，就在签名前停止。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">因此，Moss 不是钱包，也不是自动交易机器人。更准确地说，它是 Agent 与钱包签名器之间的「协议能力层 + </span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">签名前验证</span></span><span leaf="">层」。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">截至本文写作时，Moss 仍处于 Alpha 阶段，目标网络是 Monad 主网，已支持 WMON、通用 ERC-20、通用 ERC-721 和 Kuru 等能力。它未经安全审计，API、Plan 格式和包结构仍可能变化，不应把它描述成已经成熟的生产基础设施。</span></p>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">02</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">PROBLEM</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">二、它解决的不是「不会调用」，而是「不能验证」</span></h3>
+</section></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">很多 Agent 框架已经能调用合约。问题在于：调用成功，只能证明交易没有回滚，不能证明它符合</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">用户原始意图</span></span><span leaf="">。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">假设一个 Swap 工具返回两笔交易：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">1</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">授权 USDC；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">2</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">调用 DEX Router。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">仅检查交易是否能执行，回答不了这些问题：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">授权额度是不是刚好够用，还是无限授权？</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">spender 是目标协议，还是陌生地址？</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">用户最多同意付出多少资产？</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">用户至少应该收到多少资产？</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">是否发生了 Plan 没有声明的额外转账？</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">交易做了它自己声称要做的事，但这件事真的是用户要求的吗？</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 的核心设计，是把「我打算做什么」和「执行后实际发生什么」分开，再进行</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">机械对账</span></span><span leaf="">。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这比单纯依赖 Prompt 更可靠。Prompt 可以告诉 Agent「小心一点」，但无法像程序一样，对每一笔流出、流入和授权做确定性比较。</span></p>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">03</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">WORKFLOW</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">三、四步工作流：从意图到可验证 Plan</span></h3>
+</section></section></section>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">1. discover：先找能力，不猜合约</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Agent 先按用户视角的动作搜索能力，例如 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">swap</span></span><span leaf="">、</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">wrap</span></span><span leaf="">、</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">transfer</span></span><span leaf="">、</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">supply</span></span><span leaf="">。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 特意把用户语义与合约函数名分开。WMON 合约中的函数名可能是 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">deposit()</span></span><span leaf="">，但用户的意图是 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">wrap</span></span><span leaf="">。这种统一词汇让 Agent 面向「资金动作」思考，而不是被不同协议的函数命名绑架。</span></p>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">2. load：读取调用契约</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">找到候选能力后，Agent 通过 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">load</span></span><span leaf=""> 获取：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">intent 模板；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">参数语义；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">风险标签；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">调用所需的人类可读输入。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">例如金额可以传入 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">"1.5"</span></span><span leaf="">，运行时负责按代币 decimals 转成链上整数。Agent 不需要自己计算 wei，也不应该凭记忆从网络搜索代币地址。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 对代币符号还有一条重要安全规则：</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">USDC</span></span><span leaf=""> 这样的符号只通过维护过的 </span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">TokenTable</span></span><span leaf=""> 解析，不会退回链上调用 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">symbol()</span></span><span leaf=""> 猜测地址。因为任何人都可以部署一个名字同样叫 USDC 的假币。未知符号会直接报错，而不是「智能猜测」。</span></p>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">3. action：生成未签名 Plan</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">action</span></span><span leaf=""> 不发送交易，而是返回一个 Plan。简化后可以理解为：</span></p>
+<section style="margin:0 10px 20px;border-radius:8px;overflow:hidden;background:#1E293B;box-shadow:0 4px 16px -8px rgba(15,23,42,0.4);">
+<section style="display:flex;align-items:center;padding:9px 14px;background:#0F172A;">
+<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF5F56;margin-right:7px;font-size:0;line-height:0;overflow:hidden;"><span leaf="">•</span></span>
+<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FFBD2E;margin-right:7px;font-size:0;line-height:0;overflow:hidden;"><span leaf="">•</span></span>
+<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#27C93F;font-size:0;line-height:0;overflow:hidden;"><span leaf="">•</span></span>
+<span style="margin-left:12px;font-size:12px;color:#64748B;font-family:Consolas,Monaco,monospace;letter-spacing:1px;"><span leaf="">json</span></span>
+</section><section style="padding:11px 14px;"><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">{</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">  "intent": "Swap 1 MON into USDC",</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">  "txs": ["unsigned transaction steps"],</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">  "expects": {</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">    "out": [{ "token": "MON", "amountMax": "1" }],</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">    "in": [{ "token": "USDC", "amountMin": "quoted amount" }],</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">    "approvals": []</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">  },</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">  "planHash": "0x..."</span></p><p style="margin:0;font-family:Consolas,Monaco,monospace;font-size:13px;line-height:1.6;color:#E2E8F0;"><span leaf="">}</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这里最重要的不是 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">txs</span></span><span leaf="">，而是 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">expects</span></span><span leaf="">。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">风险标签只能说「这笔交易涉及资金流出」或「需要授权」，却不能回答流出多少、授权给谁。</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">expects</span></span><span leaf=""> 把风险变成机器可比较的边界：最多付出多少、至少收到多少、允许给哪个 spender 授权，以及授权上限是多少。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">planHash</span></span><span leaf=""> 则覆盖 chainId、account、交易步骤、expects 和 confirms 等关键内容。如果 Plan 在 Agent 与模拟器之间被改动，重新计算的哈希不一致，就会触发 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">PLAN_TAMPERED</span></span><span leaf="">。</span></p>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">4. simulate：把 declared 变成 verified</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">每个 Plan 都必须经过 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">simulate</span></span><span leaf="">。这是 Moss 的验证之门，而不是可选的预览按钮。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 没有只做一次普通 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">eth_call</span></span><span leaf="">。根据项目的 ADR，它在 Monad 上使用 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">debug_traceCall</span></span><span leaf=""> 的双 tracer 方案：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">callTracer</span></span><span leaf=""> 配合日志，获得调用树、事件和原生 MON 的 value 流；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">prestateTracer</span></span><span leaf=""> 的 diff mode 获取状态前后差异；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">将状态差异累积到 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">stateOverrides</span></span><span leaf="">，使后一笔交易能在前一笔的模拟结果上继续执行。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">因此，</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">simulate([planA, planB])</span></span><span leaf=""> 可以验证 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">claim → swap → supply</span></span><span leaf=""> 这样的多步流程。Plan B 能使用 Plan A 在模拟状态里刚得到的资产，而每个 Plan 的 expects 仍然独立对账。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">模拟器会从 trace 中提取：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">ERC-20 与 ERC-721 转移；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">代币授权和 NFT operator 授权；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">原生 MON 的流入流出；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">wrapped token 的 mint / burn；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">收款方、回滚和协议回执。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">然后将实际 effects 与 Plan 的 expects 比较。未声明流出、超额流出、未声明授权、超额授权、最低流入未满足、NFT 异常移动、Plan 被篡改或交易回滚，都会变成 warning。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">核心规则只有一句：</span></p>
+<section style="border-left:3px solid #52525B;padding:16px 0 16px 24px;margin:0 10px 28px;"><p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.7;letter-spacing:0.5px;"><span leaf="">「Any undeclared difference becomes a warning. 任何未声明的差异都必须被看见。」</span></p></section>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">04</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">WHY MOSS</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">四、为什么 AI Agent 尤其需要 Moss？</span></h3>
+</section></section></section>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">第一，LLM 是概率系统，资产执行需要确定性边界</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">大模型的优势是理解模糊语言、拆解目标和选择工具，但它的输出具有概率性。链上资产执行则要求地址、金额、授权和调用顺序精确无误。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">正确的系统设计，不是要求 LLM 永远不犯错，而是默认它可能犯错，并用</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">确定性程序</span></span><span leaf="">把错误拦在签名前。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 的分工是：Agent 负责理解与协调，Adapter 负责正确构建，Simulator 负责机械验证，Wallet 负责签名，用户保留最终决定权。</span></p>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">第二，工具调用成功不等于用户意图实现</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 明确区分两种检查：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">1</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><strong style="color:#27272A;"><span leaf="">Effects reconciliation</span></strong><span leaf="">：服务器侧把 Plan 声明与模拟 effects </span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">机械对账</span></span><span leaf="">；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">2</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><strong style="color:#27272A;"><span leaf="">Intent alignment</span></strong><span leaf="">：Agent 把 effects 与用户原话比较。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这一区分非常关键。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">零 warning 只说明「Plan 做了它声明要做的事」，不说明「Plan 做的是用户要求的事」。如果用户说 Swap，Agent 却选择了 Supply，即使交易的资金流完全符合这个 Supply Plan，也必须停止。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">机械验证看不到用户最初说了什么，只有 Agent 持有原始意图。因此，Moss 没有试图用一层检查解决所有问题，而是把可机械验证的部分与必须语义判断的部分拆开。</span></p>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">第三，签名权必须与推理权分离</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 永不持有私钥，</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">永不签名</span></span><span leaf="">，永不发送交易。它输出的是未签名 Plan，最终交易必须由外部钱包重新检查账户、网络和余额，并由用户确认。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这意味着，即使 Agent、适配器或模拟流程出现问题，系统仍保留一个独立的最终信任边界。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">对于真实资产，Agent 最合理的权限不是「替用户做决定并签名」，而是「生成受约束、可解释、可验证的提案」。</span></p>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">05</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">BOUNDARIES</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">五、一个容易被忽视的细节：模拟通过不等于执行结果承诺</span></h3>
+</section></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 的模拟使用当下的链上状态。模拟完成到用户签名之间，价格、订单簿、流动性和合约状态都可能变化。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">所以，零 warning 不是「这笔交易一定成功」，更不是收益保证。它只表示在模拟时点：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Plan 未被篡改；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">实际 effects 没有越过声明边界；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">没有发现未声明资金流或授权；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">必要的协议回执出现了。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">真正执行时仍需要合约内的 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">minAmountOut</span></span><span leaf=""> 等保护，钱包也要重新检查余额与交易内容。模拟是一张安全网，不是未来状态的预言机。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss v1 还明确不支持 Permit / EIP-2612 签名流、跨链桥和单笔交易内的闪电贷原子组合。尤其是跨链桥，目标链效果无法通过源链模拟完整验证，这与 Moss 要把 declared 变成 verified 的原则冲突。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这些限制不是缺点清单里的小字，而是</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">安全模型</span></span><span leaf="">的一部分。一个可信的开源项目，不只应该告诉你它能做什么，也应该明确告诉你它拒绝做什么。</span></p>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">06</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">PRACTICE</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">六、从读代码到做贡献：我如何理解 Moss</span></h3>
+</section></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">我最初是从 README 的四步流程进入项目，然后继续阅读 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">packages/core</span></span><span leaf="">、</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">packages/simulator</span></span><span leaf="">、</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">packages/erc</span></span><span leaf="">、协议模板和 WMON 参考适配器。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">真正让我理解 Moss 的，不是背下四个工具名，而是看到它如何把安全边界编码进类型、Plan 和测试：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">@Capability</span></span><span leaf=""> 声明用户视角的意图、参数和风险；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">plan()</span></span><span leaf=""> 必须给出</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">量化 expects</span></span><span leaf="">；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">TokenTable</span></span><span leaf=""> 拒绝同符号不同地址的静默覆盖；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">observations 只负责用协议语言叙述结果，不能覆盖审计 warning；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">任意 warning 都触发 halt rule，不能通过反复模拟把它当噪声消掉。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">为了验证自己是否真的理解，我还基于协议模板做了一个 MockVault Adapter 草稿，尝试描述 Vault 的 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">deposit / withdraw</span></span><span leaf="">、Plan 和 expects。这个练习很快暴露出：做一个 Demo，与设计通用 ERC-4626 Interface Layer 完全不是同一难度。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">通用接口还要回答 Vault 如何实例化、</span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">deposit / mint / withdraw / redeem</span></span><span leaf=""> 如何映射用户语义、asset 与 share 的 expects 如何量化，以及 ABI 来源怎样保持可追溯。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">因此，我把自己的首个贡献计划收敛到 Issue #13 的 ERC-4626 基础层：先与 Maintainer 对齐范围，再从 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">IERC4626.sol → ERC4626Abi → tests / docs → Draft PR</span></span><span leaf=""> 做一个小而可审查的改动，而不是未经讨论就提交一个巨大的通用 Adapter。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这也是 Moss 给我的另一个启发：安全不仅存在于运行时，也存在于开源协作方式中。ADR、ABI provenance、</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">量化 expects</span></span><span leaf="">、live e2e、changeset 和小步 PR，本质上都在减少「看起来差不多」进入主分支的机会。</span></p>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">07</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">SCENARIOS</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">七、Moss 适合哪些场景？</span></h3>
+</section></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">如果继续发展，Moss 可以成为多类 Agent 应用的基础执行层：</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">DeFi 助手：在 Swap、Wrap、Transfer 前构建并验证交易；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">自动化金库：在再平衡、领取收益或调整仓位前核对资产流；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">DAO 财库：为提案执行生成可审计、可模拟的 Plan；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">多步骤策略：验证 </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">claim → swap → supply</span></span><span leaf=""> 等跨协议流程；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Agent Wallet：在 Agent 推理层与钱包签名层之间增加可验证边界；</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Monad 协议生态：通过标准 Adapter 暴露 Agent 可发现的能力。</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">但现阶段更适合把 Moss 当成一个值得研究、测试和参与贡献的 Alpha 开源项目，而不是直接托管大额真实资产。</span></p>
+<section style="margin-top:56px;margin-bottom:32px;padding:0 10px;">
+<section style="position:relative;padding-bottom:20px;border-bottom:1px solid #E4E4E7;">
+<p style="font-size:48px;font-weight:900;color:#E4E4E7;margin:0;line-height:1;letter-spacing:-2px;"><span leaf="">∞</span></p>
+<section style="margin-top:-8px;">
+<p style="font-size:10px;color:#A1A1AA;font-weight:500;letter-spacing:3px;margin:0 0 6px;text-transform:uppercase;"><span leaf="">THE END</span></p>
+<h3 style="font-size:20px;font-weight:800;color:#27272A;margin:0;letter-spacing:0.5px;line-height:1.4;"><span leaf="">结语：不要让 Agent 更像钱包，要让它更像受约束的提案者</span></h3>
+</section></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">AI Agent 进入 Web3 后，真正困难的问题不是「它能不能调用合约」，而是：当它开始接近真实资产，我们如何知道它将要做什么、实际会发生什么，以及发现偏差时能否及时停下。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">Moss 给出的答案不是让模型变得绝对可靠，而是重新设计职责：</span></p>
+<section style="border-left:3px solid #52525B;padding:16px 0 16px 24px;margin:0 10px 28px;"><p style="font-size:16px;font-weight:700;color:#27272A;margin:0;line-height:1.7;letter-spacing:0.5px;"><span leaf="">「Agent 理解意图，协议适配器构建 Plan，模拟器核对 effects，钱包保管私钥，用户做最终决定。」</span></p></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">从这个角度看，Moss 的核心价值并不是自动化交易，而是把链上执行从「相信 AI」推进到「</span><span style="border-bottom:2px solid #52525B;font-weight:600;color:#27272A;"><span leaf="">签名前验证</span></span><span leaf="">」。</span></p>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">这可能才是 AI Agent 真正进入开放金融系统之前，需要补上的基础设施。</span></p>
+<section style="padding:0 10px;"><section style="height:1px;background:#E4E4E7;margin:0;"><span leaf="">
+</span></section></section>
+<p style="font-size:15px;font-weight:800;color:#27272A;margin:28px 10px 14px;padding-left:12px;border-left:3px solid #52525B;line-height:1.4;"><span leaf="">参考资料</span></p>
+<section style="margin-bottom:24px;"><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Moss GitHub：https://github.com/nishuzumi/moss</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">中文 README：https://github.com/nishuzumi/moss/blob/main/README.zh-CN.md</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Getting Started：https://github.com/nishuzumi/moss/blob/main/docs/getting-started.md</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Agent Skill Guide：https://github.com/nishuzumi/moss/blob/main/docs/agent-skill.md</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">Security Model：https://github.com/nishuzumi/moss/blob/main/SECURITY.md</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">ADR 0002 — Simulation via </span><span style="background:#F4F4F5;color:#27272A;padding:2px 6px;border-radius:4px;font-family:Consolas,Monaco,monospace;font-size:14px;"><span leaf="">debug_traceCall</span></span><span leaf="">：https://github.com/nishuzumi/moss/blob/main/docs/adr/0002-simulation-via-debug-tracecall.md</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">ADR 0004 — Quantified Expects：https://github.com/nishuzumi/moss/blob/main/docs/adr/0004-quantified-expects-in-plans.md</span></p></section><section style="display:flex;align-items:flex-start;margin:0 10px 12px;">
+<span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;background:#27272A;color:#FFFFFF;font-size:12px;font-weight:700;border-radius:50%;flex-shrink:0;margin-top:2px;margin-right:10px;"><span leaf="">•</span></span>
+<p style="font-size:15px;color:#52525B;margin:0;line-height:1.8;flex:1;"><span leaf="">ADR 0005 — Curated Token Catalog：https://github.com/nishuzumi/moss/blob/main/docs/adr/0005-curated-token-catalog.md</span></p></section></section>
+<p style="margin:0 10px 22px;font-size:15px;line-height:1.8;text-align:justify;color:#52525B;letter-spacing:0.3px;"><span leaf="">作者：Neo｜Dev Builder（Tech）</span></p>
+<section style="padding:0 10px;"><section style="text-align:center;margin:20px 0 36px;"><section style="display:flex;align-items:center;justify-content:center;">
+<span style="height:1px;width:48px;background:#E4E4E7;margin-right:16px;"><span leaf=""><br></span></span><span style="font-size:10px;color:#A1A1AA;letter-spacing:4px;font-weight:500;"><span leaf="">END</span></span><span style="height:1px;width:48px;background:#E4E4E7;margin-left:16px;"><span leaf=""><br></span></span>
+</section></section></section>
+<section style="padding:0 10px 24px;"><section style="border-top:1px solid #E4E4E7;padding-top:28px;">
+<p style="margin-bottom:16px;font-size:15px;line-height:1.8;color:#52525B;text-align:justify;"><span leaf="">我是 Neo，一名关注 AI Agent 安全执行与 Monad 生态的 Dev Builder。</span></p>
+<p style="margin-bottom:0;font-size:15px;line-height:1.8;color:#52525B;text-align:justify;"><span leaf="">如果你觉得今天这篇有收获，欢迎</span><strong style="color:#27272A;"><span leaf="">点赞、在看、转发</span></strong><span leaf="">三连，我们下篇见。</span></p>
+</section></section></section>
+  </div>
+</div>
+<script>
+  function gzhShowToast(msg){
+    var t=document.getElementById('gzhToast');
+    t.textContent=msg;t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer=setTimeout(function(){t.classList.remove('show');},2800);
+  }
+  function gzhCopy(){
+    var el=document.getElementById('gzh-content');
+    // 选中渲染后的富文本节点并复制（等价于手动 Ctrl+A / Ctrl+C，保留全部样式）
+    var range=document.createRange();
+    range.selectNodeContents(el);
+    var sel=window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+    var ok=false;
+    try{ok=document.execCommand('copy');}catch(e){ok=false;}
+    sel.removeAllRanges();
+    var btn=document.getElementById('gzhCopyBtn');
+    if(ok){
+      gzhShowToast('✅ 已复制！去公众号编辑器按 Ctrl/⌘+V 粘贴即可');
+      var old=btn.textContent;btn.textContent='✅ 已复制';
+      setTimeout(function(){btn.textContent=old;},2200);
+    }else{
+      gzhShowToast('⚠ 自动复制失败，请手动全选(Ctrl/⌘+A)再复制(Ctrl/⌘+C)');
+    }
+  }
+</script>
+</body>
+</html>
