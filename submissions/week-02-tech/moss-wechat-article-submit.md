@@ -23,9 +23,11 @@
 
 本文拆解 Moss 的 Plan、量化 expects、双 tracer 模拟、effects 对账与签名隔离，说明它如何让 Agent 的链上交易在签名前可验证，并在发现异常时立即停止，将最终签名权留给用户。
 
-### 公开链接
+### 公开文章链接
 
-待发布到微信公众号后回填。
+https://github.com/NeoWeb3Nova/Web3SummerInternshipProgram-MonadBuilderCamp/blob/master/submissions/week-02-tech/moss-wechat-article.md
+
+后续如发布到微信公众号，可再补充公众号链接；当前 GitHub 链接与文章长图均可作为公开提交凭证。
 
 ### 替代提交凭证
 
