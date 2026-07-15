@@ -20,6 +20,10 @@
 - **Web3 技术分享：如何从 0 到 1 使用 AI 开发笔记**: `docs/ai-dev-zero-to-one-notes.md`
 - **Web3 技术分享：如何从 0 到 1 使用 AI 开发完整转录**: `docs/ai-dev-zero-to-one-transcript.md`
 - **LXDAO × GoPlus AI Agent 安全分享完整转录**: `docs/ai-agent-security-lxdao-transcript.md`
+- **AI 时代 Web3 Researcher 成长笔记**: `docs/web3-researcher-growth.md`
+- **AI 时代 Web3 Researcher 分享完整转录**: `docs/web3-researcher-growth-transcript.md`
+- **从第一个 PR 开始：Web3 开源贡献笔记**: `docs/open-source-first-pr.md`
+- **从第一个 PR 开始分享完整转录**: `docs/open-source-first-pr-transcript.md`
 - **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
 ---
@@ -69,12 +73,16 @@
 │   ├── devrel-growth-transcript.md # DevRel 成长之路分享会完整转录
 │   ├── monad-technical-notes.md # Monad 技术学习笔记（基于 Box 分享）
 │   ├── web3career-platform.md # Web3Career 概览页与学习面板入口记录
-| │   ├── ai-agent-security-lxdao.md # LXDAO × GoPlus AI Agent 安全分享笔记
-| │   ├── agentguard-implementation-overview.md # AgentGuard 实现概览
-| │   ├── ai-dev-zero-to-one-notes.md # Web3 技术分享：如何从 0 到 1 使用 AI 开发笔记
-| │   ├── ai-dev-zero-to-one-transcript.md # Web3 技术分享：如何从 0 到 1 使用 AI 开发完整转录
-| │   ├── ai-agent-security-lxdao-transcript.md # LXDAO × GoPlus AI Agent 安全分享完整转录
-| │   ├── schedule.md        # 5 周节奏
+│   ├── ai-agent-security-lxdao.md # LXDAO × GoPlus AI Agent 安全分享笔记
+│   ├── agentguard-implementation-overview.md # AgentGuard 实现概览
+│   ├── ai-dev-zero-to-one-notes.md # Web3 技术分享：如何从 0 到 1 使用 AI 开发笔记
+│   ├── ai-dev-zero-to-one-transcript.md # Web3 技术分享：如何从 0 到 1 使用 AI 开发完整转录
+│   ├── ai-agent-security-lxdao-transcript.md # LXDAO × GoPlus AI Agent 安全分享完整转录
+│   ├── web3-researcher-growth.md # AI 时代 Web3 Researcher 成长笔记
+│   ├── web3-researcher-growth-transcript.md # AI 时代 Web3 Researcher 完整转录
+│   ├── open-source-first-pr.md # 从第一个 PR 开始：Web3 开源贡献笔记
+│   ├── open-source-first-pr-transcript.md # 从第一个 PR 开始完整转录
+│   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
 ...
