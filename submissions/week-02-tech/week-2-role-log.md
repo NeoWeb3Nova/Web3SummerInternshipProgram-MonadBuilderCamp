@@ -112,6 +112,43 @@
 
 ---
 
+### 2026-07-15（Day 3）｜完成第一个 Moss Core PR
+
+#### 学习内容
+
+| 资料/链接 | 类型 | 收获 |
+|-----------|------|------|
+| Moss `uint` semantic 与 `decodeParams` | Core 源码 | JavaScript unsafe integer 会在进入 `BigInt` 前丢失调用者原始意图，链上整数参数应在转换前建立安全边界 |
+| `Number.isSafeInteger` | JavaScript 数值语义 | `Number.isInteger` 只能证明数值看起来是整数，不能证明它仍可被唯一、精确表示 |
+| Changesets linked packages | 发布工程 | 一个 `@themoss/core` patch changeset 会按仓库 linked 配置联动计算其他包的 patch 版本 |
+| GitHub 外部 Fork Actions | 开源协作 | 首次外部贡献的 workflow 可能先进入 `action_required`，需要 Maintainer 批准后才真正创建 CI jobs |
+| Draft PR #31 | 上游迁移风险 | 新框架把旧 `uint` semantic 替换为 string-only schema；当前 PR 是对稳定 `main` 的窄范围安全修复，并如实披露 supersession 风险 |
+
+#### AI 协作与人工判断
+
+- AI 辅助完成代码检索、风险建模、TDD 用例、质量门执行、PR 正文与独立 Review。
+- 人工最终选择 `fix(core): reject unsafe numeric uint inputs` 作为首个 PR 方向，并确认不混入文档、Adapter 或其他顺手修复。
+- 独立 Reviewer 给出 READY，无 Critical / Important；采纳唯一 Minor 建议，增加 `uint128` 最大值字符串测试。
+- 对 PR #31 的重构风险保持透明，没有把“本地测试通过”描述成“CI 已通过”或“必然会合并”。
+
+#### 今日产出
+
+- 上游 PR：https://github.com/nishuzumi/moss/pull/36
+- Commit：`865fa71c5224ccbd401e002c8480c8e64013c2a2`
+- 修改范围：Core semantic、Core regression tests、patch changeset，共 3 个文件
+- TDD：先观察 unsafe number 被错误接受的 RED，再实现最小 guard 进入 GREEN
+- 验证：lint、build、typecheck、离线全量测试、Monad mainnet e2e 全部在本地 exit 0
+- GitHub Actions：https://github.com/nishuzumi/moss/actions/runs/29403921889（等待 Maintainer 批准）
+- 证据：`submissions/week-02-tech/moss-open-source-contribution-evidence.md`
+
+#### 下一步计划
+
+- 等待 Maintainer 批准 CI，并在工作流实际运行后核验每个 check。
+- 及时回应 Review；若 #31 先合并，则接受 PR 被 supersede，并把安全边界经验迁移到新框架贡献。
+- 将 Review / Merge 链接补充到证据文件，不提前声明尚未发生的结果。
+
+---
+
 ## 汇总资源索引
 
 | 资源 | 链接 | 用途 |

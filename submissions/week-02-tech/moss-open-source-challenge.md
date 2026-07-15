@@ -25,6 +25,16 @@ https://github.com/NeoWeb3Nova?tab=stars
 
 正文共 111 个汉字，符合 100～200 字要求。
 
+### 4. Moss 开源贡献 PR
+
+- PR：[`fix(core): reject unsafe numeric uint inputs`](https://github.com/nishuzumi/moss/pull/36)
+- GitHub 主页：https://github.com/NeoWeb3Nova
+- Commit：[`865fa71`](https://github.com/NeoWeb3Nova/moss/commit/865fa71c5224ccbd401e002c8480c8e64013c2a2)
+- 分支：`NeoWeb3Nova:fix/unsafe-numeric-uint`
+- 贡献类型：Core Bug Fix + Regression Tests + Changeset
+- 完整证据：[`moss-open-source-contribution-evidence.md`](./moss-open-source-contribution-evidence.md)
+- 当前状态：PR 已提交；GitHub Actions 正等待 Maintainer 批准运行，尚未收到 Review 或 Merge。
+
 ---
 
 ## 项目简介
