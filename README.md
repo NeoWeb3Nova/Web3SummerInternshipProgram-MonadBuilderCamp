@@ -24,6 +24,8 @@
 - **AI 时代 Web3 Researcher 分享完整转录**: `docs/web3-researcher-growth-transcript.md`
 - **从第一个 PR 开始：Web3 开源贡献笔记**: `docs/open-source-first-pr.md`
 - **从第一个 PR 开始分享完整转录**: `docs/open-source-first-pr-transcript.md`
+- **Web3 如何从 0 到 1 开始运营笔记**: `docs/web3-operations-zero-to-one.md`
+- **Web3 如何从 0 到 1 开始运营完整转录**: `docs/web3-operations-zero-to-one-transcript.md`
 - **修复后视频**: `D:/WindowsDownload/Video/Web3实习计划开营式 - X.repaired.mp4`
 
 ---
@@ -82,6 +84,8 @@
 │   ├── web3-researcher-growth-transcript.md # AI 时代 Web3 Researcher 完整转录
 │   ├── open-source-first-pr.md # 从第一个 PR 开始：Web3 开源贡献笔记
 │   ├── open-source-first-pr-transcript.md # 从第一个 PR 开始完整转录
+│   ├── web3-operations-zero-to-one.md # Web3 如何从 0 到 1 开始运营笔记
+│   ├── web3-operations-zero-to-one-transcript.md # Web3 如何从 0 到 1 开始运营完整转录
 │   ├── schedule.md        # 5 周节奏
 │   ├── tracks.md          # 三条赛道说明
 │   └── deliverables.md    # 交付物标准
