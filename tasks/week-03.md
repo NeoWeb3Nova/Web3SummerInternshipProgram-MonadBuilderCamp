@@ -70,7 +70,8 @@
 
 | 交付物 | 路径 | 状态 |
 |--------|-------|------|
-| 团队介绍 | `submissions/week-03/team.md` | 待填写 |
+| 团队介绍 | `submissions/week-03/team.md` | 已组队草稿（待填 PM/UI 姓名） |
+| Day1 Profile / Pitch / Formation / Agreement | `submissions/week-03/builder-profile-card.md` 等 | 2026-07-20 完成 |
 | 问题定义 | `submissions/week-03/problem-statement.md` | 待填写 |
 | 方案设计 | `submissions/week-03/solution-design.md` | 待填写 |
 | Prototype | `experiments/week-03-prototype/` | 待填写 |
