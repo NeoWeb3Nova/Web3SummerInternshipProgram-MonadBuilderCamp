@@ -14,7 +14,12 @@
 | **队名（暂定）** | Moss Mini Demo Squad（可改） |
 | **人数** | 3 |
 | **主方向** | Moss-powered DeFi Agent Mini Demo |
-| **一句话目标** | 本周做出「自然语言意图 → Moss Plan + simulate → 用户可理解的确认界面」的可演示最小链路，并留下可检查 Demo Evidence |
+| **一句话目标** | 本周做出「自然语言意图 → Moss Capability 树 + simulate → 用户可理解的确认界面」的可演示最小链路，并留下可检查 Demo Evidence |
+
+### 术语对照
+
+- **Capability 树**：Moss 新架构中代替旧 `Plan` 的未签名交易组织形式；每个 Capability 拥有一个直接 TransactionNode 和一个 Receipt 解析器，嵌套的 Capability 由 core 深度优先展平。
+- **Receipt / Changes**：simulate 后产生的有序原始事件与资产变化，Receipt 解析器将其翻译成可读文本。
 | **后续意向** | 若 Mini Demo 反馈 OK，共同评估进入 Week 4 Hackathon |
 
 ---
@@ -47,7 +52,7 @@
 
 - [ ] 有清晰用户与痛点（Problem & User Card）  
 - [ ] 只保留 **一条** 端到端链路，砍掉其余  
-- [ ] 链路可演示：意图输入 → Plan / simulate 结果 → 确认态  
+- [ ] 链路可演示：意图输入 → Capability / simulate 结果 → 确认态  
 - [ ] 至少一类 **Demo Evidence**：合约地址 / 交易哈希 / 可运行 Repo / 录屏 之一（优先多类）  
 - [ ] 3 分钟 Pitch 能讲完：问题 → 方案 → 演示 → 为什么 Monad → 下一步  
 - [ ] 至少 1–3 人试用或看过 Demo 并留下反馈  

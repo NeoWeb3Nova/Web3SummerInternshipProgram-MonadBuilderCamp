@@ -21,7 +21,7 @@
 
 ## 2. 核心问题
 
-用户想用自然语言表达 DeFi 意图（例如“把 100 USDC 换成收益最高的稳定币”），但 Agent 给出的 Plan 充满他们不理解的 effects：
+用户想用自然语言表达 DeFi 意图（例如“把 100 USDC 换成收益最高的稳定币”），但 Agent 经 Moss 返回的 Capability 交易树和 Receipts 充满他们不理解的 effects：
 
 - 中间代币是什么？会不会被夹？
 - 滑点、手续费、授权额度是多少？
@@ -46,11 +46,11 @@
 
 ## 4. 我们的方案
 
-**自然语言意图 → Moss Agent 生成 Plan → simulate 验证 effects → 用户理解后确认签名。**
+**自然语言意图 → Moss Agent 生成 Capability 树 → simulate 验证 effects（Receipts / Changes） → 用户理解后确认签名。**
 
 本周只聚焦一条最小链路：
 
-> **用户说“我想用 100 USDC 换 MON”，Agent 返回可理解的 Swap Plan，展示 token in / token out / 预估数量 / 滑点 / 授权状态，用户确认后签名。**
+> **用户说“我想用 100 USDC 换 MON”，Agent 经 Moss action 返回一个 Swap Capability（包含未签名 TransactionNode），simulate 后展示 Receipt / Changes：token in / token out / 预估数量 / 滑点 / 授权状态，用户确认后签名。**
 
 核心设计原则：
 - **Moss 只规划与模拟，不自动签名、不自动广播**
@@ -64,7 +64,7 @@
 Demo 只展示以下 3 屏/3 步：
 
 1. **意图输入**：用户输入一句自然语言（如“swap 100 USDC to MON on Monad”）
-2. **Plan 解析与模拟**：Agent 经 Moss 生成 Plan，simulate 后返回关键 effects
+2. **Capability 解析与模拟**：Agent 经 Moss 调用 action 生成 Capability 树，simulate 后返回 Receipts / Changes
 3. **确认页**：清晰展示 what / how much / risk / 授权 / 预估结果，用户确认后触发签名
 
 Demo Evidence（周五前至少一种）：
@@ -95,11 +95,11 @@ Demo Evidence（周五前至少一种）：
 
 ## 8. 关键假设与验证方式
 
-**假设**：用户在看到“自然语言 → 可理解的 Plan + simulate 结果”后，更愿意确认并完成核心动作。
+**假设**：用户在看到“自然语言 → 可理解的 Capability 树 + simulate Receipts”后，更愿意确认并完成核心动作。
 
 **验证方式**：
 - Day 4 找 1–3 位同学试用 Demo
-- 记录：是否看懂 Plan / 是否敢点确认 / 是否理解风险
+- 记录：是否看懂 Capability Receipt / 是否敢点确认 / 是否理解风险
 - 根据反馈调整确认页信息层级
 
 ---
@@ -110,7 +110,7 @@ Demo Evidence（周五前至少一种）：
 |------|----------|
 | **Neo（Dev）** | 搭建前端框架、接入 Moss / simulate、准备 Demo Evidence |
 | **Riso（PM）** | 控范围、维护看板、记录决策、准备用户测试问题 |
-| **eleven（UI）** | 设计 3 屏主路径（输入 → Plan → 确认）、输出线框或高保真 |
+| **eleven（UI）** | 设计 3 屏主路径（输入 → Capability Receipt → 确认）、输出线框或高保真 |
 
 ---
 

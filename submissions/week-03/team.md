@@ -13,7 +13,7 @@
 | 人数 | 3 |
 | 组队日期 | 2026-07-20 |
 | 本周主题 | Moss-powered DeFi Agent Mini Demo |
-| 一句话 | 自然语言意图 → Moss Plan + simulate → 用户确认；只做一条可演示链路 |
+| 一句话 | 自然语言意图 → Moss Capability 树 + simulate → 用户确认；只做一条可演示链路 |
 
 ---
 

@@ -33,11 +33,11 @@
 
 ## 共同关注的问题
 
-**链上 DeFi 新手在使用 AI Agent 执行意图时，因不理解 Plan 效果而签下风险操作。**
+**链上 DeFi 新手在使用 AI Agent 执行意图时，因不理解 Capability 交易效果（Receipt 和 Changes）而签下风险操作。**
 
-具体场景：新手用自然语言告诉 Agent “把资金配置到收益最高的池子”，Agent 返回一组 Plan。但新手看不懂 effects（封装、滑点、中间代币、手续费），容易误触或被 MEV 利用。
+具体场景：新手用自然语言告诉 Agent “把 100 USDC 换成 MON”，Agent 经 Moss 返回一组 Capability（未签名交易树）和 simulate 后的 Receipt / Changes。但新手看不懂 effects（封装、滑点、中间代币、手续费、授权），容易误触或被 MEV 利用。
 
-本周目标：做出一条可演示最小链路 —— 自然语言意图 → Moss Plan + simulate → 用户可理解的确认界面，并留下 Demo Evidence（合约地址/交易哈希/可运行 Repo/录屏）。
+本周目标：做出一条可演示最小链路 —— 自然语言意图 → Moss Capability 树 + simulate → 用户可理解的确认界面，并留下 Demo Evidence（合约地址/交易哈希/可运行 Repo/录屏）。
 
 ---
 
