@@ -74,7 +74,7 @@
 | 时间投入与沟通节奏是否匹配 | ⏳ 三人需填入投入小时；默认晚间 15 分钟同步 |
 | 是否有人负责推进和记录 | ✅ **PM** 主责看板与纪要；Neo 补技术证据 |
 | 是否至少有人能完成可检查 Demo Evidence | ✅ **Dev（Neo）** 主责；UI 负责可展示界面证据 |
-| 对「本周做到什么程度」是否有共同预期 | ⏳ 写入本文 DoD；Day 2 在 Build Plan 再收紧一次 |
+| 对「本周做到什么程度」是否有共同预期 | ⏳ 写入本文 DoD；Day 2 在 Solution Design / Build Plan 再收紧一次 |
 
 ---
 
@@ -95,7 +95,7 @@
 | 日 | 焦点 | 主要产出 |
 |----|------|----------|
 | Day 1（今） | 认识彼此、组队 | Profile · Pitch · Formation · Agreement |
-| Day 2 | 问题与范围 | Problem Card · Scope · Monad Fit · Build Plan |
+| Day 2 | 问题与范围 | Problem Card · Scope · Monad Fit · Solution Design / Build Plan |
 | Day 3 | 实现与交接 | 一条链路跑通或可模拟 + UI 主路径 |
 | Day 4 | 反馈与迭代 | Feedback Log · 修最伤展示的问题 |
 | Day 5 | Demo 与复盘 | Demo 脚本 · Pitch · Retro · Hackathon 意向 |

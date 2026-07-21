@@ -21,7 +21,7 @@
 - 可兼任：协议调研、风险边界说明、技术叙事与 Pitch 技术段
 
 我想做什么：
-Moss-powered DeFi Agent Mini Demo——为不想深耕 ABI 的用户，用自然语言提 DeFi 意图，Agent 在 Moss 安全边界内生成 Plan 并 simulate，最后只剩用户签名确认。本周只验证一条核心链路（Swap / Lending / Portfolio 三选一），不做通用 Agent、不做自动签名、不做多链。
+Moss-powered DeFi Agent Mini Demo——为不想深耕 ABI 的用户，用自然语言提 DeFi 意图，Agent 在 Moss 安全边界内生成 Capability 交易树并 simulate，最后只剩用户签名确认。本周只验证一条核心链路（Swap / Lending / Portfolio 三选一），不做通用 Agent、不做自动签名、不做多链。
 
 我希望寻找的队友：
 - 产品 / Research：定义真实用户场景、需求优先级、竞品与风险
@@ -51,11 +51,11 @@ Moss-powered DeFi Agent Mini Demo——为不想深耕 ABI 的用户，用自然
 【方向】Dev（Tech / Core Dev）
 
 【我会什么】
-合约（Solidity + Foundry）、前端链上交互（React + wagmi/viem）、Moss Agent 协议层（Plan + simulate）、可复验 Demo Evidence；也能帮协议调研和技术叙事。
+合约（Solidity + Foundry）、前端链上交互（React + wagmi/viem）、Moss Agent 协议层（Capability 树 + simulate）、可复验 Demo Evidence；也能帮协议调研和技术叙事。
 
 【我想做什么】
 Moss-powered DeFi Agent Mini Demo：
-自然语言提意图 → Moss 出 Plan + 模拟验证 → 用户确认签名
+自然语言提意图 → Moss 出 Capability 树 + 模拟验证 → 用户确认签名
 只做一条最小链路，安全边界：不自动签名、不广播。
 
 【希望找的队友】

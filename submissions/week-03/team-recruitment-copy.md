@@ -14,7 +14,7 @@
 我是 Neo，Week 2 选的 Dev Builder。已本地跑通 Moss（discover→load→action→simulate），写了 MockVault 适配器草稿，还给 Moss 上游提交了 PR #36。
 
 想在 Week 3 做一个超小 Demo：
-用自然语言说 "把 1 MON 换成 USDC"→Agent 解析→Moss 生成 Plan→simulate 验证→只剩签名确认。
+用自然语言说 "把 1 MON 换成 USDC"→Agent 解析→Moss 生成 Capability 树→simulate 验证→只剩签名确认。
 只验证一条核心链路，不做通用 Agent，不做多链。
 
 找 2–3 位队友：
@@ -46,7 +46,7 @@ Hi，我是 Neo，这次 Builder Camp 的 Dev Builder（Tech）。
 
 **想做的 Mini Demo**
 一个 Moss-powered 的 DeFi Agent 最小可用原型：
-自然语言意图 → Agent 解析 → Moss 生成带有 expects 的 Plan → simulate 验证 effects → 用户确认签名
+自然语言意图 → Agent 解析 → Moss 生成 Capability 树 → simulate 验证 effects → 用户确认签名
 
 只选一个核心动作，例如：
 - Swap Assistant："1 MON → USDC"

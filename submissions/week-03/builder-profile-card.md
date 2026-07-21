@@ -41,7 +41,7 @@
 ### Dev 核心
 - 智能合约：Solidity + Foundry（编写、测试、部署脚本）
 - 前端与链上交互：Vite + React + wagmi / viem
-- Agent × 协议：Moss Action、Plan、simulate 验证
+- Agent × 协议：Moss action、Capability 树、simulate 验证
 - 最小 PoC 快速验证，再决定是否扩大开发
 - Demo Evidence：合约地址、交易哈希、Explorer、可复现 README
 
@@ -74,11 +74,11 @@
 
 **首选：Moss-powered DeFi Agent Mini Demo**
 
-用户用自然语言提出 DeFi 意图 → Agent 经 Moss 生成 Plan → simulate 验证 → **人签名确认**。
+用户用自然语言提出 DeFi 意图 → Agent 经 Moss 生成 Capability 树 → simulate 验证 Receipts / Changes → **人签名确认**。
 
 本周只验证一个核心动作（三选一，与 PM 对齐后锁定）：
 
-1. **Swap Assistant**：自然语言换币 → Plan → simulate → 确认  
+1. **Swap Assistant**：自然语言换币 → Capability 树 → simulate → 确认  
 2. **Lending Assistant**：查询 / 存入（Neverland 等）  
 3. **Portfolio Assistant**：余额与仓位摘要（只读优先）
 
@@ -89,7 +89,7 @@ Moss 不签名、不广播；有资产操作必须人工确认；不做自动策
 
 ## 6. 60 秒自我介绍
 
-> 我是 Neo，Dev Builder。Week 2 主攻 Moss：本地跑通 discover → load → action → simulate，写了 MockVault 草稿，Neverland 适配器与 Core PR #36 都已提交；另外在 Cobo Agentic Wallet Track 拿过季军。我在小队里负责合约、前端、Moss 调用和可检查的 Demo Evidence。我想做的是：让用户用自然语言表达 DeFi 意图，Agent 在 Moss 安全边界内出 Plan 并模拟，最后只剩签名一步。本周大约 25–30 小时，偏好每晚短同步，先砍到一条可演示链路再冲 Week 4。
+>我是 Neo，Dev Builder。Week 2 主攻 Moss：本地跑通 discover → load → action → simulate，写了 MockVault 草稿，Neverland 适配器与 Core PR #36 都已提交；另外在 Cobo Agentic Wallet Track 拿过季军。我在小队里负责合约、前端、Moss 调用和可检查的 Demo Evidence。我想做的是：让用户用自然语言表达 DeFi 意图，Agent 在 Moss 安全边界内生成 Capability 树并模拟，最后只剩签名一步。本周大约 25–30 小时，偏好每晚短同步，先砍到一条可演示链路再冲 Week 4。
 
 ---
 
@@ -108,7 +108,7 @@ Moss 不签名、不广播；有资产操作必须人工确认；不做自动策
 ## 8. 本周目标（个人 checklist）
 
 - [x] Day 1：Builder Profile + Idea Pitch + 组队 + Working Agreement
-- [ ] Day 2：Problem & User Card、Mini Demo Scope、Monad Fit、Build Plan
+- [ ] Day 2：Problem & User Card、Mini Demo Scope、Monad Fit、Build Plan（Solution Design）
 - [ ] Day 3：Research / Ops / Dev Handoff，跑通或模拟一条端到端链路
 - [ ] Day 4：3–5 人测试，Feedback Log + 至少一次迭代
 - [ ] Day 5：Mini Demo + 3 分钟 Pitch + Hackathon Readiness

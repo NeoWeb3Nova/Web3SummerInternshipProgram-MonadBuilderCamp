@@ -26,7 +26,7 @@
 | 要素 | 内容 |
 |------|------|
 | **为谁** | 已有钱包、想试 Monad 上 DeFi，但被 ABI / 合约 / 滑点 / 授权吓退的新手或轻量用户 |
-| **什么问题** | 看不懂 DApp 操作路径；担心 Agent 自动转走资产；不知道何时该签名、如何确认 Plan 安全 |
+| **什么问题** | 看不懂 DApp 操作路径；担心 Agent 自动转走资产；不知道何时该签名、如何确认 Capability 安全 |
 | **准备做什么** | 自然语言 → Agent 解析 → Moss 生成 Capability 树 + simulate → UI 清晰展示 Receipt / Changes → 用户确认签名 |
 | **本周边界** | 只验证 **一条** 核心动作（Swap / Lending 查询或存入 / Portfolio 只读 三选一） |
 
@@ -72,4 +72,4 @@
 - [ ] 核心动作最终选哪个（Swap / Lending / Portfolio）  
 - [ ] 目标用户一句话是否改写  
 - [ ] UI 主路径线框（3–5 屏内）  
-- [ ] 「本周做到什么程度」共同预期写入 Build Plan  
+- [ ] 「本周做到什䣇度」共同预期写入 Solution Design / Build Plan
