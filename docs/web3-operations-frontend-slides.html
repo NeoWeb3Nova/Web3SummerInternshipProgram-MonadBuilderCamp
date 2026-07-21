@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Web3 运营从 0 到 1：从增长目标到长期生态的完整操作系统">
+  <title>Web3 运营从 0 到 1｜Frontend Slides</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* === THEME TOKENS · ONCHAIN OPERATIONS LEDGER === */
+    :root {
+      --stage-bg: #d9d8d2;
+      --slide-bg: #f4f1e8;
+      --paper: #f4f1e8;
+      --ink: #101311;
+      --muted: #5f655f;
+      --line: #b9bbb1;
+      --red: #ff3b1f;
+      --acid: #d7ff3f;
+      --blue: #225cff;
+      --mint: #9de8c4;
+      --font-display: "Archivo", sans-serif;
+      --font-body: "Noto Sans SC", sans-serif;
+      --font-mono: "IBM Plex Mono", monospace;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* ===========================================
+       FIXED 16:9 STAGE: MANDATORY BASE STYLES
+       Include this ENTIRE file in every presentation.
+       Slides are authored at 1920×1080 and scaled as a whole.
+       =========================================== */
+
+    /* 1. Lock the browser viewport */
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        background: var(--stage-bg, #000);
+    }
+
+    /* 2. Full-window deck viewport */
+    .deck-viewport {
+        position: fixed;
+        inset: 0;
+        overflow: hidden;
+        background: var(--stage-bg, #000);
+    }
+
+    /* 3. Fixed 16:9 design canvas.
+       JavaScript sets transform: translate(...) scale(...). */
+    .deck-stage {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        transform-origin: 0 0;
+        background: var(--slide-bg, #fff);
+    }
+
+    /* 4. Slides stack inside the fixed stage.
+       Content must be laid out at 1920×1080, not reflowed per device. */
+    .slide {
+        position: absolute;
+        inset: 0;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        display: block;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        background: var(--slide-bg, #fff);
+    }
+
+    .slide.active,
+    .slide.visible {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+        z-index: 1;
+    }
+
+    /* 5. Keep media inside authored slide bounds */
+    img,
+    video,
+    canvas,
+    svg {
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    /* 6. Presentation chrome stays outside the slide design system */
+    .deck-controls {
+        position: fixed;
+        left: 50%;
+        bottom: 22px;
+        transform: translateX(-50%);
+        z-index: 1000;
+    }
+
+    /* 7. Print one fixed-size slide per page */
+    @media print {
+        html,
+        body {
+            width: 1920px;
+            height: auto;
+            overflow: visible;
+            background: #fff;
+        }
+
+        .deck-viewport {
+            position: static;
+            overflow: visible;
+            background: #fff;
+        }
+
+        .deck-stage {
+            position: static;
+            width: auto;
+            height: auto;
+            transform: none !important;
+            background: none;
+        }
+
+        .slide {
+            position: relative;
+            display: block !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+            width: 1920px;
+            height: 1080px;
+            break-after: page;
+            page-break-after: always;
+        }
+
+        .slide:last-child {
+            break-after: auto;
+            page-break-after: auto;
+        }
+
+        .deck-controls {
+            display: none !important;
+        }
+    }
+
+    /* 8. Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            transition-duration: 0.2s !important;
+        }
+    }
+
+    /* === GLOBAL SLIDE SYSTEM === */
+    body { font-family: var(--font-body); color: var(--ink); }
+    button { font: inherit; }
+    .slide { padding: 72px 82px 68px; }
+    .slide::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(rgba(16,19,17,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(16,19,17,.045) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.48), transparent 70%);
+    }
+    .slide.dark { --slide-bg: #101311; color: var(--paper); }
+    .slide.blue { --slide-bg: var(--blue); color: white; }
+    .slide.acid { --slide-bg: var(--acid); color: var(--ink); }
+    .slide.red { --slide-bg: var(--red); color: var(--ink); }
+    .slide.dark::before, .slide.blue::before { background-image: linear-gradient(rgba(255,255,255,.065) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.065) 1px, transparent 1px); }
+
+    .topline { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; padding-bottom: 20px; border-bottom: 2px solid currentColor; font: 600 20px/1 var(--font-mono); letter-spacing: .08em; text-transform: uppercase; }
+    .topline .section-tag { display: flex; gap: 12px; align-items: center; }
+    .topline .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--red); }
+    .slide.red .dot, .slide.acid .dot { background: var(--blue); }
+    .slide.dark .dot, .slide.blue .dot { background: var(--acid); }
+    .page-no { opacity: .68; }
+
+    .slide-title { position: relative; z-index: 2; margin-top: 40px; font: 800 64px/1.12 var(--font-body); letter-spacing: -.01em; max-width: 1510px; }
+    .slide-kicker { font: 600 20px/1 var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--red); }
+    .dark .slide-kicker, .blue .slide-kicker { color: var(--acid); }
+    .big-statement { position: relative; z-index: 2; font: 900 96px/1.11 var(--font-body); letter-spacing: -.008em; }
+    .big-statement .outline { color: transparent; -webkit-text-stroke: 2px currentColor; }
+    .big-number { font: 900 188px/.8 var(--font-display); letter-spacing: -.08em; }
+    .mono { font-family: var(--font-mono); }
+    .muted { color: var(--muted); }
+    .dark .muted, .blue .muted { color: rgba(255,255,255,.66); }
+    .accent { color: var(--red); }
+    .dark .accent, .blue .accent { color: var(--acid); }
+
+    /* === ENTRANCE MOTION === */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+    .reveal-left { opacity: 0; transform: translateX(-44px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal-scale { opacity: 0; transform: scale(.94); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .slide.visible .reveal, .slide.visible .reveal-left, .slide.visible .reveal-scale { opacity: 1; transform: none; }
+    .d1 { transition-delay: .08s; } .d2 { transition-delay: .16s; } .d3 { transition-delay: .24s; } .d4 { transition-delay: .32s; } .d5 { transition-delay: .40s; }
+
+    /* === REUSABLE PANELS, GRIDS, AND LABELS === */
+    .content { position: relative; z-index: 2; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 28px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 24px; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); gap: 20px; }
+    .panel { border: 2px solid currentColor; padding: 30px 34px; background: rgba(244,241,232,.72); min-height: 180px; }
+    .dark .panel, .blue .panel { background: rgba(255,255,255,.045); }
+    .panel h3 { font: 800 37px/1.12 var(--font-body); margin-bottom: 16px; }
+    .panel p, .panel li { font: 500 25px/1.55 var(--font-body); }
+    .panel ul { list-style: none; }
+    .panel li::before { content: "→"; margin-right: 12px; color: var(--red); font-family: var(--font-mono); }
+    .dark .panel li::before, .blue .panel li::before { color: var(--acid); }
+    .label { display: inline-block; padding: 8px 12px; border: 2px solid currentColor; font: 600 17px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase; margin-bottom: 22px; }
+    .pill { border-radius: 999px; padding: 12px 20px; border: 2px solid currentColor; font: 600 20px/1 var(--font-mono); white-space: nowrap; }
+    .rule { height: 2px; background: currentColor; opacity: .3; }
+
+    /* === COVER COMPOSITION === */
+    .cover { padding: 0; }
+    .cover::before { display: none; }
+    .cover-grid { display: grid; grid-template-columns: 1.28fr .72fr; height: 100%; }
+    .cover-main { position: relative; padding: 84px 92px; background: var(--paper); border-right: 3px solid var(--ink); overflow: hidden; }
+    .cover-main::after { content: "OPS"; position: absolute; right: -28px; bottom: -112px; font: 900 360px/.8 var(--font-display); letter-spacing: -.1em; color: transparent; -webkit-text-stroke: 3px rgba(16,19,17,.14); transform: rotate(-6deg); }
+    .cover-aside { padding: 82px 60px; background: var(--acid); display: flex; flex-direction: column; justify-content: space-between; }
+    .cover h1 { position: relative; z-index: 2; margin-top: 164px; max-width: 1050px; font: 900 112px/1.08 var(--font-body); letter-spacing: -.014em; }
+    .cover h1 em { color: var(--red); font-style: normal; }
+    .cover-sub { position: relative; z-index: 2; margin-top: 34px; font: 600 29px/1.45 var(--font-body); max-width: 850px; }
+    .cover-side-number { font: 900 176px/.82 var(--font-display); letter-spacing: -.09em; }
+    .cover-side-copy { font: 700 29px/1.45 var(--font-body); }
+    .stamp { width: 190px; height: 190px; border: 4px solid var(--ink); border-radius: 50%; display: grid; place-items: center; text-align: center; font: 700 19px/1.4 var(--font-mono); transform: rotate(9deg); }
+
+    /* === STATEMENT SLIDES === */
+    .statement-wrap { height: calc(100% - 54px); display: grid; grid-template-columns: 1.35fr .65fr; align-items: center; gap: 80px; }
+    .statement-side { align-self: stretch; border-left: 2px solid currentColor; padding-left: 42px; display: flex; flex-direction: column; justify-content: center; gap: 22px; }
+    .statement-side p { font: 500 27px/1.55 var(--font-body); }
+
+    /* === FLOW / PIPELINE COMPONENTS === */
+    .phase-strip { margin-top: 50px; display: grid; grid-template-columns: repeat(9, 1fr); gap: 10px; }
+    .phase { min-height: 470px; border: 2px solid currentColor; padding: 22px 16px; display: flex; flex-direction: column; justify-content: space-between; background: rgba(255,255,255,.22); }
+    .phase:nth-child(3n+1) { background: var(--acid); color: var(--ink); }
+    .phase:nth-child(3n+2) { background: var(--red); color: var(--ink); }
+    .phase:nth-child(3n) { background: var(--blue); color: white; }
+    .phase b { font: 800 25px/1.18 var(--font-body); }
+    .phase span { font: 600 17px/1.35 var(--font-mono); }
+    .phase-no { font: 900 62px/.9 var(--font-display) !important; }
+
+    .pipeline { position: relative; margin-top: 66px; display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; align-items: start; }
+    .pipeline::before { content: ""; position: absolute; left: 4%; right: 4%; top: 41px; height: 8px; background: currentColor; opacity: .24; }
+    .station { position: relative; text-align: center; }
+    .station-dot { width: 82px; height: 82px; margin: 0 auto 24px; border-radius: 50%; border: 4px solid currentColor; background: var(--paper); display: grid; place-items: center; font: 700 19px/1 var(--font-mono); }
+    .station:nth-child(3n) .station-dot { background: var(--acid); }
+    .station:nth-child(3n+1) .station-dot { background: var(--red); }
+    .station:nth-child(3n+2) .station-dot { background: var(--mint); }
+    .station b { font: 700 23px/1.2 var(--font-body); }
+    .station small { display: block; margin-top: 10px; font: 500 16px/1.35 var(--font-mono); color: var(--muted); }
+
+    /* === PHASE DETAIL LAYOUT === */
+    .phase-detail { display: grid; grid-template-columns: 420px 1fr; gap: 42px; margin-top: 40px; height: 760px; }
+    .phase-index { border-right: 2px solid currentColor; padding-right: 38px; display: flex; flex-direction: column; justify-content: space-between; }
+    .phase-index .num { font: 900 220px/.78 var(--font-display); letter-spacing: -.1em; }
+    .phase-index .question { font: 700 30px/1.35 var(--font-body); }
+    .phase-body { display: grid; grid-template-rows: 1fr auto; gap: 24px; }
+    .action-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px; }
+    .deliverables { border: 2px solid currentColor; padding: 24px 30px; display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+    .deliverables strong { font: 700 21px/1 var(--font-mono); margin-right: 10px; }
+    .deliverables span { background: var(--ink); color: var(--paper); padding: 9px 13px; font: 500 18px/1 var(--font-mono); }
+    .dark .deliverables span, .blue .deliverables span { background: var(--acid); color: var(--ink); }
+    .insight { border-left: 12px solid var(--red); padding: 22px 30px; background: rgba(255,59,31,.09); font: 700 29px/1.45 var(--font-body); }
+    .dark .insight, .blue .insight { border-color: var(--acid); background: rgba(215,255,63,.08); }
+
+    /* === FUNNEL / CHANNEL / AI VISUALS === */
+    .funnel-wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; margin-top: 44px; }
+    .funnel { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+    .funnel-row { height: 82px; display: flex; align-items: center; justify-content: space-between; padding: 0 28px; border: 2px solid var(--ink); font: 700 25px/1 var(--font-body); }
+    .funnel-row span { font: 500 17px/1 var(--font-mono); }
+    .funnel-row:nth-child(1) { width: 100%; background: #f4f1e8; }
+    .funnel-row:nth-child(2) { width: 90%; background: #ffd0c8; }
+    .funnel-row:nth-child(3) { width: 80%; background: #ff8f7d; }
+    .funnel-row:nth-child(4) { width: 70%; background: #d7ff3f; }
+    .funnel-row:nth-child(5) { width: 60%; background: #9de8c4; }
+    .funnel-row:nth-child(6) { width: 50%; background: #225cff; color: white; }
+    .metric-stack { display: grid; gap: 14px; }
+    .metric { display: grid; grid-template-columns: 64px 1fr; gap: 18px; align-items: center; padding: 19px 22px; border-bottom: 2px solid currentColor; }
+    .metric b { font: 800 28px/1 var(--font-display); color: var(--red); }
+    .metric p { font: 600 24px/1.3 var(--font-body); }
+
+    .channel-map { margin-top: 46px; display: grid; grid-template-columns: 1fr 260px 1fr; align-items: stretch; gap: 26px; }
+    .channel-side { border: 2px solid currentColor; padding: 34px; }
+    .channel-side h3 { font: 800 48px/1.1 var(--font-body); margin-bottom: 26px; }
+    .channel-side .channel-list { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .channel-chip { border: 2px solid currentColor; padding: 15px 16px; font: 600 20px/1.1 var(--font-mono); }
+    .channel-center { background: var(--red); color: var(--ink); border: 2px solid currentColor; display: grid; place-items: center; text-align: center; padding: 22px; font: 800 31px/1.2 var(--font-body); }
+    .return-loop { grid-column: 1 / -1; padding: 18px; background: var(--acid); color: var(--ink); text-align: center; border: 2px solid var(--ink); font: 700 22px/1.2 var(--font-mono); }
+
+    .human-ai { margin-top: 50px; display: grid; grid-template-columns: 1fr 180px 1fr; gap: 24px; align-items: center; }
+    .human-ai .side { min-height: 520px; border: 3px solid currentColor; padding: 42px; }
+    .human-ai h3 { font: 900 70px/1 var(--font-display); margin-bottom: 34px; }
+    .human-ai ul { list-style: none; display: grid; gap: 17px; font: 600 27px/1.35 var(--font-body); }
+    .human-ai li { display: flex; justify-content: space-between; border-bottom: 1px solid currentColor; padding-bottom: 12px; }
+    .human-ai .join { width: 180px; height: 180px; border-radius: 50%; display: grid; place-items: center; background: var(--acid); color: var(--ink); border: 3px solid var(--ink); font: 900 48px/1 var(--font-display); transform: rotate(-8deg); }
+
+    /* === CHECKLIST AND CLOSING === */
+    .check-cols { margin-top: 44px; display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .check-col { min-height: 640px; border: 2px solid currentColor; padding: 34px; }
+    .check-col:nth-child(1) { background: #ffd0c8; }
+    .check-col:nth-child(2) { background: var(--acid); }
+    .check-col:nth-child(3) { background: var(--mint); }
+    .check-col h3 { font: 900 52px/1 var(--font-body); margin-bottom: 30px; }
+    .check-col ul { list-style: none; display: grid; gap: 18px; }
+    .check-col li { font: 600 23px/1.38 var(--font-body); padding-left: 38px; position: relative; }
+    .check-col li::before { content: "□"; position: absolute; left: 0; top: 0; font: 700 28px/1 var(--font-mono); }
+
+    .closing { padding: 0; display: grid; grid-template-columns: 1fr 540px; }
+    .closing-main { position: relative; padding: 86px; background: var(--ink); color: var(--paper); display: flex; flex-direction: column; justify-content: center; overflow: hidden; }
+    .closing-main::after { content: "∞"; position: absolute; right: -20px; bottom: -160px; font: 900 520px/.8 var(--font-display); color: rgba(215,255,63,.09); }
+    .closing-main h2 { position: relative; z-index: 2; font: 900 94px/1.12 var(--font-body); max-width: 1120px; }
+    .closing-main p { position: relative; z-index: 2; margin-top: 34px; font: 500 29px/1.55 var(--font-body); max-width: 1000px; color: rgba(244,241,232,.72); }
+    .closing-aside { background: var(--red); color: var(--ink); padding: 70px 52px; display: flex; flex-direction: column; justify-content: space-between; border-left: 3px solid var(--ink); }
+    .closing-aside .formula { font: 900 52px/1.2 var(--font-display); }
+
+    /* === DECK CHROME · OUTSIDE THE STAGE === */
+    .deck-controls { display: flex; align-items: center; gap: 12px; background: rgba(16,19,17,.92); color: white; padding: 10px 16px; border-radius: 999px; backdrop-filter: blur(10px); font: 500 13px/1 var(--font-mono); opacity: .34; transition: opacity .2s ease; }
+    .deck-controls:hover { opacity: 1; }
+    .deck-controls button { width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: white; cursor: pointer; }
+    .deck-controls button:hover { background: rgba(255,255,255,.14); }
+    .progress-track { width: 110px; height: 4px; background: rgba(255,255,255,.2); overflow: hidden; }
+    .progress-fill { height: 100%; width: 0; background: var(--acid); transition: width .35s var(--ease); }
+
+    /* === INLINE EDITING CONTROLS === */
+    .edit-hotzone { position: fixed; top: 0; left: 0; width: 80px; height: 80px; z-index: 10000; cursor: pointer; }
+    .edit-toggle, .save-copy { position: fixed; top: 18px; z-index: 10001; border: 0; border-radius: 999px; padding: 11px 15px; background: var(--ink); color: white; cursor: pointer; font: 600 13px/1 var(--font-mono); opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
+    .edit-toggle { left: 18px; }
+    .save-copy { left: 112px; }
+    .edit-toggle.show, .edit-toggle.active, .save-copy.show { opacity: 1; pointer-events: auto; }
+    .editing [data-editable] { outline: 2px dashed var(--red); outline-offset: 4px; cursor: text; }
+    .edit-status { position: fixed; top: 68px; left: 18px; z-index: 10001; background: var(--acid); color: var(--ink); padding: 8px 12px; font: 600 12px/1 var(--font-mono); opacity: 0; transform: translateY(-6px); transition: .25s ease; pointer-events: none; }
+    .edit-status.show { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+  <!-- === FIXED PRESENTATION STAGE === -->
+  <div class="deck-viewport">
+    <main class="deck-stage" id="deckStage" aria-live="polite">
+
+      <!-- 01 · COVER -->
+      <section class="slide cover active" aria-label="封面">
+        <div class="cover-grid">
+          <div class="cover-main">
+            <div class="topline reveal"><span>Web3 Operations / Field Manual</span><span>2026</span></div>
+            <h1 class="reveal d1" data-editable>别再把 Web3 运营理解成<em>发推和拉群</em>了</h1>
+            <p class="cover-sub reveal d2" data-editable>从 Proposal 到 Demo Day，再到长期生态留存：一套把目标变成 Builder、项目与贡献的增长操作系统。</p>
+          </div>
+          <aside class="cover-aside">
+            <div class="cover-side-number reveal-left">00→01</div>
+            <div class="stamp reveal-scale d2">BUILDER<br>PIPELINE<br>OPERATIONS</div>
+            <p class="cover-side-copy reveal d3" data-editable>目标 × 合作 × 内容 × Program × 社群 × 数据</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 02 · MISCONCEPTION -->
+      <section class="slide red" aria-label="运营误区">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>01 / 重新定义</span><span class="page-no">02</span></div>
+        <div class="statement-wrap content">
+          <div class="big-statement reveal" data-editable>运营不是活动的<br><span class="outline">包装层</span><br>而是增长链路的<br>设计者。</div>
+          <div class="statement-side reveal d2">
+            <span class="label">表面动作</span>
+            <p data-editable>发推、拉群、办活动，只是用户可见的执行层。</p>
+            <div class="rule"></div>
+            <span class="label">真实工作</span>
+            <p data-editable>从合作方目标到 Builder 留存，设计每一次触达、行动与转化。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 03 · OUTCOMES & ACTIONS -->
+      <section class="slide" aria-label="三种结果和四个动作">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>01 / 重新定义</span><span class="page-no">03</span></div>
+        <h2 class="slide-title reveal" data-editable>真正的 Web3 运营，最终只回答两个问题：<span class="accent">带来了谁？他们留下了什么？</span></h2>
+        <div class="grid-3 content" style="margin-top:42px">
+          <article class="panel reveal d1"><span class="label">01 / Acquisition</span><h3 data-editable>拉新</h3><p data-editable>让目标人群第一次知道项目，并进入报名与社区。</p></article>
+          <article class="panel reveal d2" style="background:var(--acid)"><span class="label">02 / Retention</span><h3 data-editable>留存</h3><p data-editable>用内容、活动、互动与服务，让参与者持续留在路径中。</p></article>
+          <article class="panel reveal d3" style="background:var(--mint)"><span class="label">03 / Growth</span><h3 data-editable>增长</h3><p data-editable>从围观者到 Builder，再到项目贡献者和长期生态成员。</p></article>
+        </div>
+        <div class="content reveal d4" style="margin-top:28px;display:flex;gap:16px;align-items:center">
+          <strong class="mono" style="font-size:21px;margin-right:10px">FOUR MOVES</strong>
+          <span class="pill">被看到</span><span class="pill">被理解</span><span class="pill">被使用</span><span class="pill">持续贡献</span>
+        </div>
+      </section>
+
+      <!-- 04 · TWO-SIDED VALUE -->
+      <section class="slide dark" aria-label="B 端和 C 端双边价值">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>01 / 双边价值</span><span class="page-no">04</span></div>
+        <h2 class="slide-title reveal" data-editable>运营站在两条价值链的交汇处：<span class="accent">向合作方交付增长，向 Builder 交付成长。</span></h2>
+        <div class="grid-2 content" style="margin-top:50px">
+          <article class="panel reveal-left d1" style="min-height:520px">
+            <span class="label">B-SIDE / PARTNERS</span><h3 data-editable>项目方、合作伙伴、赞助方</h3>
+            <ul><li data-editable>为什么合作，能够获得什么</li><li data-editable>如何证明 Builder 与项目增长</li><li data-editable>如何沉淀案例与长期信任</li></ul>
+            <div class="deliverables" style="margin-top:32px"><span>Proposal</span><span>数据复盘</span><span>结项报告</span></div>
+          </article>
+          <article class="panel reveal-left d2" style="min-height:520px;border-color:var(--acid)">
+            <span class="label">C-SIDE / BUILDERS</span><h3 data-editable>开发者、参与者、贡献者</h3>
+            <ul><li data-editable>为什么参加，下一步做什么</li><li data-editable>怎样组队、Build、提交并获反馈</li><li data-editable>活动之后还有哪些长期机会</li></ul>
+            <div class="deliverables" style="margin-top:32px"><span>Onboarding</span><span>技术支持</span><span>Grant / 实习</span></div>
+          </article>
+        </div>
+      </section>
+
+      <!-- 05 · NINE PHASES -->
+      <section class="slide" aria-label="九阶段全流程">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>02 / 九阶段全流程</span><span class="page-no">05</span></div>
+        <h2 class="slide-title reveal" data-editable>一场活动不是一个点，而是一条<span class="accent">从目标到生态资产</span>的完整链路。</h2>
+        <div class="phase-strip content">
+          <div class="phase reveal d1"><span class="phase-no">01</span><b>明确<br>目标</b><span>GOAL</span></div>
+          <div class="phase reveal d1"><span class="phase-no">02</span><b>BD 与<br>合作</b><span>PARTNER</span></div>
+          <div class="phase reveal d2"><span class="phase-no">03</span><b>Marketing<br>宣发</b><span>REACH</span></div>
+          <div class="phase reveal d2"><span class="phase-no">04</span><b>Program<br>设计</b><span>DESIGN</span></div>
+          <div class="phase reveal d3"><span class="phase-no">05</span><b>Builder<br>招募</b><span>ACQUIRE</span></div>
+          <div class="phase reveal d3"><span class="phase-no">06</span><b>社区<br>运营</b><span>ACTIVATE</span></div>
+          <div class="phase reveal d4"><span class="phase-no">07</span><b>项目<br>提交</b><span>DELIVER</span></div>
+          <div class="phase reveal d4"><span class="phase-no">08</span><b>评审<br>反馈</b><span>VERIFY</span></div>
+          <div class="phase reveal d5"><span class="phase-no">09</span><b>孵化与<br>增长</b><span>COMPOUND</span></div>
+        </div>
+      </section>
+
+      <!-- 06 · PHASES 1–2 -->
+      <section class="slide" aria-label="明确目标和 BD 合作">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>02 / 起点</span><span class="page-no">06</span></div>
+        <div class="phase-detail content">
+          <aside class="phase-index reveal-left"><div><span class="slide-kicker">PHASE 01—02</span><div class="num">01</div></div><p class="question" data-editable>先定义为什么做，再定义和谁一起做。</p></aside>
+          <div class="phase-body">
+            <div class="action-grid">
+              <article class="panel reveal d1"><span class="label">明确目标</span><h3 data-editable>活动形式不是起点</h3><ul><li data-editable>合作方目标与约束</li><li data-editable>Builder 画像与 KPI 树</li><li data-editable>预算、周期、交付边界</li><li data-editable>活动后的长期承接</li></ul></article>
+              <article class="panel reveal d2"><span class="label">BD 与合作</span><h3 data-editable>连接新的流量池与信任网络</h3><ul><li data-editable>权益、资源、责任、时间线</li><li data-editable>资金、Grant、嘉宾、评委、渠道</li><li data-editable>数据归属与结项方式</li></ul></article>
+            </div>
+            <div>
+              <div class="deliverables reveal d3"><strong>OUTPUTS</strong><span>Business Goal</span><span>用户画像</span><span>Proposal</span><span>RACI</span><span>合作清单</span></div>
+              <div class="insight reveal d4" style="margin-top:20px" data-editable>先回答项目方为什么做、Builder 为什么来，才有资格讨论办 AMA 还是黑客松。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 07 · PHASES 3–4 -->
+      <section class="slide blue" aria-label="Marketing 和 Program 设计">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>02 / 从看到到参与</span><span class="page-no">07</span></div>
+        <div class="phase-detail content">
+          <aside class="phase-index reveal-left"><div><span class="slide-kicker">PHASE 03—04</span><div class="num">03</div></div><p class="question" data-editable>内容负责降低理解门槛，Program 负责降低行动门槛。</p></aside>
+          <div class="phase-body">
+            <div class="action-grid">
+              <article class="panel reveal d1"><span class="label">MARKETING</span><h3 data-editable>不是发一次，而是设计触达节奏</h3><ul><li data-editable>主推文、短文案、FAQ、中英文</li><li data-editable>X、公众号、视频、社群与合作渠道</li><li data-editable>直播、回放、Workshop 多形态触达</li></ul></article>
+              <article class="panel reveal d2"><span class="label">PROGRAM DESIGN</span><h3 data-editable>不是静态课表，而是行为设计</h3><ul><li data-editable>Open Day → Workshop → Office Hour</li><li data-editable>任务、积分、榜单与 Mini Demo</li><li data-editable>根据反馈动态调整难度与内容</li></ul></article>
+            </div>
+            <div>
+              <div class="deliverables reveal d3"><strong>OUTPUTS</strong><span>内容矩阵</span><span>宣发日历</span><span>Program Map</span><span>活动时间线</span><span>FAQ</span></div>
+              <div class="insight reveal d4" style="margin-top:20px" data-editable>先让人理解，再让人参与，最后让人提交。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 08 · PHASES 5–6 -->
+      <section class="slide" aria-label="Builder 招募和社区运营">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>02 / 从报名到 Build</span><span class="page-no">08</span></div>
+        <div class="phase-detail content">
+          <aside class="phase-index reveal-left"><div><span class="slide-kicker">PHASE 05—06</span><div class="num">05</div></div><p class="question" data-editable>报名只是一次状态变化，激活才是路径真正开始。</p></aside>
+          <div class="phase-body">
+            <div class="action-grid">
+              <article class="panel reveal d1"><span class="label">BUILDER ACQUISITION</span><h3 data-editable>把“知道”转成“开始做”</h3><ul><li data-editable>报名页、渠道来源与专属链接</li><li data-editable>Onboarding、入群与组队机制</li><li data-editable>识别高潜 Builder 和团队</li></ul></article>
+              <article class="panel reveal d2"><span class="label">COMMUNITY OPS</span><h3 data-editable>让每个节点都有下一步</h3><ul><li data-editable>提醒、FAQ、资料与进度信息</li><li data-editable>技术问题收集、分发、闭环</li><li data-editable>流失信号与高潜贡献者标签</li></ul></article>
+            </div>
+            <div>
+              <div class="deliverables reveal d3"><strong>OUTPUTS</strong><span>Builder 名单</span><span>Onboarding</span><span>组队表</span><span>社群 SOP</span><span>问题工单</span></div>
+              <div class="insight reveal d4" style="margin-top:20px" data-editable>所谓“丝滑体验”，就是每个关键节点都能及时获得下一步提示与问题反馈。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 09 · PHASES 7–8 -->
+      <section class="slide red" aria-label="提交和评审反馈">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>02 / 从 Build 到结果</span><span class="page-no">09</span></div>
+        <div class="phase-detail content">
+          <aside class="phase-index reveal-left"><div><span class="slide-kicker" style="color:var(--ink)">PHASE 07—08</span><div class="num">07</div></div><p class="question" data-editable>提交标准和反馈机制，必须从第一天嵌入参与路径。</p></aside>
+          <div class="phase-body">
+            <div class="action-grid">
+              <article class="panel reveal d1"><span class="label">SUBMISSION</span><h3 data-editable>不要等截止日前才疯狂催交</h3><ul><li data-editable>提前公开模板与评分标准</li><li data-editable>中期检查、Mini Demo、Office Hour</li><li data-editable>追踪未提交团队并主动干预</li></ul></article>
+              <article class="panel reveal d2"><span class="label">REVIEW & FEEDBACK</span><h3 data-editable>评审不是终点，是信任节点</h3><ul><li data-editable>评分维度、权重与一致性</li><li data-editable>结果通知与可执行反馈</li><li data-editable>优秀项目转成案例与生态资产</li></ul></article>
+            </div>
+            <div>
+              <div class="deliverables reveal d3"><strong>OUTPUTS</strong><span>Submission Guide</span><span>状态看板</span><span>评分表</span><span>Demo Day Runbook</span><span>案例库</span></div>
+              <div class="insight reveal d4" style="margin-top:20px;border-color:var(--blue)" data-editable>真正的项目运营，是从第一天就把“完成”的定义讲清楚。</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 10 · PHASE 9 -->
+      <section class="slide acid" aria-label="孵化和生态增长">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>02 / 复利阶段</span><span class="page-no">10</span></div>
+        <div class="statement-wrap content">
+          <div>
+            <span class="slide-kicker reveal" style="color:var(--blue)">PHASE 09 / COMPOUND</span>
+            <div class="big-statement reveal d1" style="margin-top:30px" data-editable>Demo Day 后的跟进，决定你创造的是<span style="color:var(--red)">短期声量</span>，还是长期生态资产。</div>
+          </div>
+          <div class="statement-side reveal d2">
+            <span class="label">长期承接</span>
+            <p data-editable>Grant、孵化、加速器、实习、岗位、Ambassador。</p>
+            <div class="rule"></div>
+            <span class="label">角色升级</span>
+            <p data-editable>参与者 → 贡献者 → 导师 → 合作伙伴 → 下一届组织者。</p>
+            <div class="rule"></div>
+            <span class="label">关键交付</span>
+            <p data-editable>高潜名单、生态人才池、结项报告、下一阶段运营计划。</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 11 · BUILDER PIPELINE -->
+      <section class="slide" aria-label="Builder Pipeline">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>03 / Builder Pipeline</span><span class="page-no">11</span></div>
+        <h2 class="slide-title reveal" data-editable>别统计“群里有多少人”，要追踪<span class="accent">多少人走到了下一站</span>。</h2>
+        <div class="pipeline content">
+          <div class="station reveal d1"><div class="station-dot">01</div><b>看见</b><small>曝光 / 阅读</small></div>
+          <div class="station reveal d1"><div class="station-dot">02</div><b>报名</b><small>转化 / 来源</small></div>
+          <div class="station reveal d2"><div class="station-dot">03</div><b>入群</b><small>入群率</small></div>
+          <div class="station reveal d2"><div class="station-dot">04</div><b>参与</b><small>到场 / 互动</small></div>
+          <div class="station reveal d3"><div class="station-dot">05</div><b>组队</b><small>有效团队</small></div>
+          <div class="station reveal d3"><div class="station-dot">06</div><b>Build</b><small>活跃 Builder</small></div>
+          <div class="station reveal d4"><div class="station-dot">07</div><b>提交</b><small>有效项目</small></div>
+          <div class="station reveal d4"><div class="station-dot">08</div><b>反馈</b><small>反馈完成率</small></div>
+          <div class="station reveal d5"><div class="station-dot">09</div><b>留存</b><small>Grant / 岗位</small></div>
+          <div class="station reveal d5"><div class="station-dot">10</div><b>贡献</b><small>复参与率</small></div>
+        </div>
+        <div class="content insight reveal d5" style="margin-top:70px" data-editable>运营真正优化的，不是某一条推文，而是从第一次触达到长期贡献之间的每一次转化。</div>
+      </section>
+
+      <!-- 12 · DROP-OFF RISKS -->
+      <section class="slide dark" aria-label="五个高风险流失点">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>03 / 流失诊断</span><span class="page-no">12</span></div>
+        <h2 class="slide-title reveal" data-editable>Builder 不是突然消失的。他通常在<span class="accent">“不知道下一步”</span>时离开。</h2>
+        <div class="content" style="margin-top:42px;display:grid;grid-template-columns:repeat(5,1fr);gap:16px">
+          <article class="panel reveal d1" style="min-height:500px"><div class="big-number accent" style="font-size:86px">01</div><h3 data-editable>价值未说清</h3><p data-editable>主推文只讲项目背景，没有讲参与者收益。</p></article>
+          <article class="panel reveal d2" style="min-height:500px"><div class="big-number accent" style="font-size:86px">02</div><h3 data-editable>报名后失联</h3><p data-editable>没有及时入群，没有明确 Onboarding。</p></article>
+          <article class="panel reveal d3" style="min-height:500px"><div class="big-number accent" style="font-size:86px">03</div><h3 data-editable>内容无行动</h3><p data-editable>活动很多，却没有清晰的下一步动作。</p></article>
+          <article class="panel reveal d4" style="min-height:500px"><div class="big-number accent" style="font-size:86px">04</div><h3 data-editable>标准公布晚</h3><p data-editable>临近提交才公开模板和评分标准。</p></article>
+          <article class="panel reveal d5" style="min-height:500px"><div class="big-number accent" style="font-size:86px">05</div><h3 data-editable>活动即终点</h3><p data-editable>Demo Day 后没有机会、反馈与联系。</p></article>
+        </div>
+      </section>
+
+      <!-- 13 · PUBLIC / PRIVATE CHANNELS -->
+      <section class="slide" aria-label="公域和私域双循环">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>04 / 渠道双循环</span><span class="page-no">13</span></div>
+        <h2 class="slide-title reveal" data-editable>公域负责让人看见，私域负责让人行动，成果再回到公域形成<span class="accent">增长飞轮</span>。</h2>
+        <div class="channel-map content">
+          <article class="channel-side reveal-left d1"><span class="label">PUBLIC / REACH</span><h3 data-editable>公域：建立认知</h3><div class="channel-list"><span class="channel-chip">Twitter / X</span><span class="channel-chip">公众号</span><span class="channel-chip">B 站</span><span class="channel-chip">YouTube</span><span class="channel-chip">直播</span><span class="channel-chip">项目案例</span></div></article>
+          <div class="channel-center reveal-scale d2" data-editable>报名页<br>VALUE<br>PROPOSITION</div>
+          <article class="channel-side reveal-left d3"><span class="label">PRIVATE / ACTION</span><h3 data-editable>私域：推动行动</h3><div class="channel-list"><span class="channel-chip">Telegram</span><span class="channel-chip">微信群</span><span class="channel-chip">Workshop</span><span class="channel-chip">Office Hour</span><span class="channel-chip">FAQ</span><span class="channel-chip">截止提醒</span></div></article>
+          <div class="return-loop reveal d4" data-editable>↩ 回放、优秀项目、获奖结果、Builder 故事重新进入公域，带来下一轮信任与获客</div>
+        </div>
+      </section>
+
+      <!-- 14 · SIX-LAYER FUNNEL -->
+      <section class="slide" aria-label="六层数据漏斗">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>05 / 数据系统</span><span class="page-no">14</span></div>
+        <h2 class="slide-title reveal" data-editable>数据不必复杂，但必须回答：<span class="accent">人从哪里来，走到哪一步，为什么离开。</span></h2>
+        <div class="funnel-wrap content">
+          <div class="funnel reveal-left d1">
+            <div class="funnel-row"><b>曝光</b><span>阅读 / 观看 / 渠道覆盖</span></div>
+            <div class="funnel-row"><b>获客</b><span>报名 / 来源 / 新增</span></div>
+            <div class="funnel-row"><b>激活</b><span>入群 / 到场 / 互动</span></div>
+            <div class="funnel-row"><b>Build</b><span>组队 / 活跃 / 问题闭环</span></div>
+            <div class="funnel-row"><b>交付</b><span>提交 / Demo / 质量</span></div>
+            <div class="funnel-row"><b>留存</b><span>Grant / 实习 / 复参与</span></div>
+          </div>
+          <div class="metric-stack reveal d2">
+            <div class="metric"><b>01</b><p data-editable>社媒后台：曝光与互动</p></div>
+            <div class="metric"><b>02</b><p data-editable>报名表：人数与渠道来源</p></div>
+            <div class="metric"><b>03</b><p data-editable>社群记录：成员与激活</p></div>
+            <div class="metric"><b>04</b><p data-editable>结构化表格：到场、组队、提交、去向</p></div>
+            <div class="metric"><b>05</b><p data-editable>每周固定复盘一次转化</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 15 · VANITY METRICS -->
+      <section class="slide red" aria-label="不要只看虚荣指标">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>05 / 指标纠偏</span><span class="page-no">15</span></div>
+        <h2 class="slide-title reveal" data-editable>漂亮的数字，不等于真实的增长。</h2>
+        <div class="grid-2 content" style="margin-top:52px">
+          <article class="panel reveal d1" style="min-height:230px"><span class="label">1000 MEMBERS</span><h3 data-editable>群里 1000 人</h3><p data-editable>≠ 1000 个活跃 Builder</p></article>
+          <article class="panel reveal d2" style="min-height:230px"><span class="label">10K VIEWS</span><h3 data-editable>推文 1 万阅读</h3><p data-editable>≠ 高质量报名</p></article>
+          <article class="panel reveal d3" style="min-height:230px"><span class="label">500 SIGNUPS</span><h3 data-editable>报名 500 人</h3><p data-editable>≠ 500 人开始 Build</p></article>
+          <article class="panel reveal d4" style="min-height:230px"><span class="label">50 PROJECTS</span><h3 data-editable>提交 50 个项目</h3><p data-editable>还要看完整度、质量和后续留存</p></article>
+        </div>
+        <div class="content insight reveal d5" style="margin-top:28px;border-color:var(--blue);font-size:34px" data-editable>真正有说服力的数据，是用户从一个阶段走到下一个阶段的转化。</div>
+      </section>
+
+      <!-- 16 · AI & HUMAN -->
+      <section class="slide dark" aria-label="AI 和人的分工">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>06 / AI 运营工作流</span><span class="page-no">16</span></div>
+        <h2 class="slide-title reveal" data-editable>AI 缩短生产链路，人类负责<span class="accent">目标、判断与责任</span>。</h2>
+        <div class="human-ai content">
+          <article class="side reveal-left d1"><span class="label">AI / AMPLIFY</span><h3>AI</h3><ul><li><span>调研与汇总</span><span>01</span></li><li><span>Proposal 骨架</span><span>02</span></li><li><span>多平台内容变体</span><span>03</span></li><li><span>FAQ 与问题整理</span><span>04</span></li><li><span>数据清洗与复盘初稿</span><span>05</span></li></ul></article>
+          <div class="join reveal-scale d2">×</div>
+          <article class="side reveal-left d3" style="border-color:var(--acid)"><span class="label">HUMAN / DECIDE</span><h3>人</h3><ul><li><span>真实目标</span><span>01</span></li><li><span>用户与关系</span><span>02</span></li><li><span>资源取舍</span><span>03</span></li><li><span>事实核验</span><span>04</span></li><li><span>最终策略与责任</span><span>05</span></li></ul></article>
+        </div>
+      </section>
+
+      <!-- 17 · SOP -->
+      <section class="slide" aria-label="活动前中后 SOP">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>07 / 最小可行 SOP</span><span class="page-no">17</span></div>
+        <h2 class="slide-title reveal" data-editable>把九阶段压缩成一张可执行清单：<span class="accent">活动前设计，活动中纠偏，活动后复利。</span></h2>
+        <div class="check-cols content">
+          <article class="check-col reveal d1"><h3>活动前</h3><ul><li data-editable>目标、人群、预算、周期与交付</li><li data-editable>Builder 画像、KPI、承接路径</li><li data-editable>Proposal、RACI、时间线、风险</li><li data-editable>Program、嘉宾、评委、技术支持</li><li data-editable>宣发节奏、提交要求、评分标准</li></ul></article>
+          <article class="check-col reveal d2"><h3>活动中</h3><ul><li data-editable>重复触达报名、组队、Build、提交</li><li data-editable>Workshop 与 Office Hour 降低门槛</li><li data-editable>及时收集并闭环问题</li><li data-editable>持续检查转化漏斗</li><li data-editable>维护高潜 Builder 与项目标签</li></ul></article>
+          <article class="check-col reveal d3"><h3>活动后</h3><ul><li data-editable>完成评审、反馈、感谢与通知</li><li data-editable>对接 Grant、孵化、实习和岗位</li><li data-editable>发布回放、案例与成果</li><li data-editable>输出结项报告和复盘</li><li data-editable>让优秀参与者成为长期贡献者</li></ul></article>
+        </div>
+      </section>
+
+      <!-- 18 · OPERATING PRINCIPLES -->
+      <section class="slide blue" aria-label="运营原则">
+        <div class="topline"><span class="section-tag"><i class="dot"></i>08 / 操作原则</span><span class="page-no">18</span></div>
+        <h2 class="slide-title reveal" data-editable>如果只记住六句话，就记住这六句。</h2>
+        <div class="grid-3 content" style="margin-top:50px">
+          <article class="panel reveal d1"><span class="label">01</span><h3 data-editable>目标先于形式</h3><p data-editable>先问为什么做，再问做什么。</p></article>
+          <article class="panel reveal d2"><span class="label">02</span><h3 data-editable>路径重于热闹</h3><p data-editable>追踪状态迁移，不迷信群人数。</p></article>
+          <article class="panel reveal d3"><span class="label">03</span><h3 data-editable>重复触达</h3><p data-editable>不同形态覆盖不同信息路径。</p></article>
+          <article class="panel reveal d1"><span class="label">04</span><h3 data-editable>每步都有下一步</h3><p data-editable>明确行动、标准、时间与反馈。</p></article>
+          <article class="panel reveal d2"><span class="label">05</span><h3 data-editable>数据服务决策</h3><p data-editable>能解释转化与流失即可。</p></article>
+          <article class="panel reveal d3"><span class="label">06</span><h3 data-editable>结束之后复利</h3><p data-editable>把优秀 Builder 变成生态关系。</p></article>
+        </div>
+      </section>
+
+      <!-- 19 · CLOSING -->
+      <section class="slide closing" aria-label="结语">
+        <div class="closing-main">
+          <span class="slide-kicker reveal">FINAL / OPERATING SYSTEM</span>
+          <h2 class="reveal d1" data-editable>Web3 运营的交付物，不是“发了多少内容”，而是生态增加了多少<span style="color:var(--acid)">有效参与者</span>。</h2>
+          <p class="reveal d2" data-editable>活动是产品，参与路径是用户旅程，Builder 是需要被获取、激活和留存的核心用户。运营，就是把一次性活动变成持续增长的生态操作系统。</p>
+        </div>
+        <aside class="closing-aside">
+          <div class="topline reveal"><span>WEB3 OPS</span><span>19 / 19</span></div>
+          <div class="formula reveal d2">REACH<br>→ ACT<br>→ BUILD<br>→ STAY</div>
+          <div class="stamp reveal-scale d3">FROM<br>ATTENTION<br>TO<br>CONTRIBUTION</div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <!-- === PRESENTATION CONTROLS === -->
+  <nav class="deck-controls" aria-label="演示文稿导航">
+    <button id="prevBtn" aria-label="上一页">←</button>
+    <span id="slideCounter">01 / 19</span>
+    <div class="progress-track" aria-hidden="true"><div class="progress-fill" id="progressFill"></div></div>
+    <button id="nextBtn" aria-label="下一页">→</button>
+  </nav>
+
+  <!-- === INLINE EDITING UI === -->
+  <div class="edit-hotzone" title="编辑模式（E）"></div>
+  <button class="edit-toggle" id="editToggle" title="编辑模式（E）">编辑</button>
+  <button class="save-copy" id="saveCopy" title="保存 HTML 副本">保存副本</button>
+  <div class="edit-status" id="editStatus">编辑模式已开启 · 自动保存到浏览器</div>
+
+  <script>
+    /* === SLIDE PRESENTATION CONTROLLER === */
+    class SlidePresentation {
+      constructor() {
+        this.slides = [...document.querySelectorAll('.slide')];
+        this.stage = document.getElementById('deckStage');
+        this.currentSlide = 0;
+        this.wheelLocked = false;
+        this.touchStartX = 0;
+        this.setupStageScale();
+        this.setupNavigation();
+        this.showSlide(this.readHash(), false);
+      }
+
+      setupStageScale() {
+        const scale = () => {
+          const factor = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+          const x = (window.innerWidth - 1920 * factor) / 2;
+          const y = (window.innerHeight - 1080 * factor) / 2;
+          this.stage.style.transform = `translate(${x}px, ${y}px) scale(${factor})`;
+        };
+        scale();
+        window.addEventListener('resize', scale);
+      }
+
+      readHash() {
+        const page = Number(location.hash.replace('#', ''));
+        return Number.isFinite(page) && page > 0 ? page - 1 : 0;
+      }
+
+      setupNavigation() {
+        document.getElementById('prevBtn').addEventListener('click', () => this.prev());
+        document.getElementById('nextBtn').addEventListener('click', () => this.next());
+        document.addEventListener('keydown', (event) => {
+          if (event.target.isContentEditable) return;
+          if (['ArrowRight', 'ArrowDown', 'PageDown', ' '].includes(event.key)) { event.preventDefault(); this.next(); }
+          if (['ArrowLeft', 'ArrowUp', 'PageUp'].includes(event.key)) { event.preventDefault(); this.prev(); }
+          if (event.key === 'Home') this.showSlide(0);
+          if (event.key === 'End') this.showSlide(this.slides.length - 1);
+        });
+        window.addEventListener('hashchange', () => this.showSlide(this.readHash(), false));
+        window.addEventListener('wheel', (event) => {
+          if (this.wheelLocked || Math.abs(event.deltaY) < 24) return;
+          this.wheelLocked = true;
+          event.deltaY > 0 ? this.next() : this.prev();
+          setTimeout(() => { this.wheelLocked = false; }, 520);
+        }, { passive: true });
+        window.addEventListener('touchstart', (event) => { this.touchStartX = event.changedTouches[0].screenX; }, { passive: true });
+        window.addEventListener('touchend', (event) => {
+          const delta = event.changedTouches[0].screenX - this.touchStartX;
+          if (Math.abs(delta) > 55) delta < 0 ? this.next() : this.prev();
+        }, { passive: true });
+      }
+
+      showSlide(index, updateHash = true) {
+        this.currentSlide = Math.max(0, Math.min(index, this.slides.length - 1));
+        this.slides.forEach((slide, i) => {
+          const active = i === this.currentSlide;
+          slide.classList.toggle('active', active);
+          slide.classList.toggle('visible', active);
+          slide.setAttribute('aria-hidden', String(!active));
+        });
+        const current = String(this.currentSlide + 1).padStart(2, '0');
+        const total = String(this.slides.length).padStart(2, '0');
+        document.getElementById('slideCounter').textContent = `${current} / ${total}`;
+        document.getElementById('progressFill').style.width = `${((this.currentSlide + 1) / this.slides.length) * 100}%`;
+        document.title = `${current} / ${total} · Web3 运营从 0 到 1`;
+        if (updateHash) history.replaceState(null, '', `#${this.currentSlide + 1}`);
+      }
+
+      next() { this.showSlide(this.currentSlide + 1); }
+      prev() { this.showSlide(this.currentSlide - 1); }
+    }
+
+    /* === INLINE EDITOR WITH LOCAL AUTOSAVE === */
+    class InlineEditor {
+      constructor() {
+        this.isActive = false;
+        this.storageKey = 'web3-operations-frontend-slides-v1';
+        this.editables = [...document.querySelectorAll('[data-editable]')];
+        this.restore();
+        this.editables.forEach((element, index) => {
+          element.dataset.editIndex = index;
+          element.addEventListener('input', () => this.persist());
+        });
+      }
+
+      toggleEditMode() {
+        this.isActive = !this.isActive;
+        document.body.classList.toggle('editing', this.isActive);
+        document.getElementById('editToggle').classList.toggle('active', this.isActive);
+        document.getElementById('saveCopy').classList.toggle('show', this.isActive);
+        document.getElementById('editStatus').classList.toggle('show', this.isActive);
+        this.editables.forEach(element => element.contentEditable = String(this.isActive));
+      }
+
+      persist() {
+        const content = this.editables.map(element => element.innerHTML);
+        localStorage.setItem(this.storageKey, JSON.stringify(content));
+      }
+
+      restore() {
+        try {
+          const saved = JSON.parse(localStorage.getItem(this.storageKey) || 'null');
+          if (Array.isArray(saved)) this.editables.forEach((element, index) => { if (saved[index] != null) element.innerHTML = saved[index]; });
+        } catch (error) { console.warn('未能恢复本地编辑内容', error); }
+      }
+
+      saveCopy() {
+        const clone = document.documentElement.cloneNode(true);
+        clone.querySelectorAll('[contenteditable]').forEach(element => element.removeAttribute('contenteditable'));
+        clone.querySelector('body').classList.remove('editing');
+        const blob = new Blob(['<!DOCTYPE html>\n' + clone.outerHTML], { type: 'text/html;charset=utf-8' });
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = 'web3-operations-frontend-slides-edited.html';
+        link.click();
+        URL.revokeObjectURL(link.href);
+      }
+    }
+
+    /* === APPLICATION BOOTSTRAP === */
+    const presentation = new SlidePresentation();
+    const editor = new InlineEditor();
+    document.getElementById('editToggle').addEventListener('click', () => editor.toggleEditMode());
+    document.getElementById('saveCopy').addEventListener('click', () => editor.saveCopy());
+
+    const hotzone = document.querySelector('.edit-hotzone');
+    const editToggle = document.getElementById('editToggle');
+    let hideTimeout = null;
+    const showEditorControl = () => { clearTimeout(hideTimeout); editToggle.classList.add('show'); };
+    const hideEditorControl = () => { hideTimeout = setTimeout(() => { if (!editor.isActive) editToggle.classList.remove('show'); }, 400); };
+    hotzone.addEventListener('mouseenter', showEditorControl);
+    hotzone.addEventListener('mouseleave', hideEditorControl);
+    editToggle.addEventListener('mouseenter', showEditorControl);
+    editToggle.addEventListener('mouseleave', hideEditorControl);
+    hotzone.addEventListener('click', () => editor.toggleEditMode());
+    document.addEventListener('keydown', (event) => {
+      if ((event.key === 'e' || event.key === 'E') && !event.target.isContentEditable) editor.toggleEditMode();
+    });
+  </script>
+</body>
+</html>
