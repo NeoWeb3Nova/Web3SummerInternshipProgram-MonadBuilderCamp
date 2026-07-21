@@ -1,5 +1,10 @@
 # Week 2｜Challenge｜Moss Open Source Contribution Plan
 
+> ⚠️ **历史计划（Week 2）**  
+> 正文中的 Plan / expects / MockVault 路径反映当时贡献策略。  
+> 现行架构与对外叙事：[`moss-architecture-errata.md`](./moss-architecture-errata.md)。  
+> 实际已落地方向含 Neverland adapter（Capability/Receipt）与 unsafe-uint PR #36。
+
 > 学员：Neo
 >
 > Builder 身份：Dev Builder（Tech）

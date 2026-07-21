@@ -1,10 +1,16 @@
 # Week 2｜Challenge｜GitHub Exploration Log — Moss
 
-> 学员：Neo
-> 方向：Dev Builder（Tech）
-> 探索日期：2026-07-14
-> 项目：[nishuzumi/moss](https://github.com/nishuzumi/moss)
-> 本地阅读版本：`0612574f05f46095754d1d3ddd1085c69edf7191`（个人 Fork）
+> 学员：Neo  
+> 方向：Dev Builder（Tech）  
+> 探索日期：2026-07-14  
+> 项目：[nishuzumi/moss](https://github.com/nishuzumi/moss)  
+> 本地阅读版本：`0612574f05f46095754d1d3ddd1085c69edf7191`（个人 Fork，**当时为 Plan/expects 时代**）
+
+> ⚠️ **架构勘误（2026-07-20）**  
+> 下文目录、Plan、expects、TokenTable、observation 等描述反映探索当日源码，**不是**当前 main 线。  
+> 现行框架：Capability tree + exhaustive Receipt（上游 #31）。  
+> 请改读：[`moss-architecture-errata.md`](./moss-architecture-errata.md)、[`moss-beginner-guide-v2.md`](./moss-beginner-guide-v2.md)、`experiments/moss/MOSS-STUDY-NOTES.md`。  
+> 本日志保留为「当时如何探索仓库」的过程证据，不整体改写。
 
 ## 1. 项目简介
 

@@ -1,5 +1,10 @@
 # 第一次跑通 Moss：零私钥完成一笔 Monad 链上交易模拟
 
+> ⚠️ **历史稿（Week 2 · Plan/expects 叙事）**  
+> 现行架构请读修订版：[`moss-beginner-guide-v2.md`](./moss-beginner-guide-v2.md)  
+> 术语对照：[`moss-architecture-errata.md`](./moss-architecture-errata.md)  
+> 本文保留为 2026-07-14 课程交付证据，内容**已过时**，勿作对外最新说明。
+
 > 学 Moss 的第一步，不是连接钱包，也不是先读完整套架构。先用一条命令跑通 `discover → load → action → simulate`，亲眼看到一笔未签名交易如何在真实链上状态中被验证。
 
 如果你第一次打开 Moss 仓库，很容易被 `core`、`simulator`、协议包、MCP Server 和一整套 ADR 劝退。

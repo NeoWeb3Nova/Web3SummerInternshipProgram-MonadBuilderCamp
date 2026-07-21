@@ -31,9 +31,11 @@ https://github.com/NeoWeb3Nova
 关键设计：
 
 - aToken 地址运行时从 `PoolDataProvider` 解析，避免硬编码过时
-- 量化 `expects` + 自动 approval 步骤
-- `Supply` / `Withdraw` 事件作为链上收据，绑定 `confirms`
+- 非 native 资产 supply 时嵌套 ERC-20 `approve` **子 Capability**（Capability 树，非旧 Plan）
+- `@Receipt` 解析 `Supply` / `Withdraw` 等 Changes，满足穷尽覆盖
 - 所有合约地址均通过 `eth_getCode` 在 Monad mainnet 上验证
+
+> 架构说明：Neverland adapter 落在 Capability/Receipt 框架上。若旧笔记写「quantified expects」，以现行代码与 [`moss-architecture-errata.md`](./moss-architecture-errata.md) 为准。
 
 ## 4. 合约地址（Monad mainnet, chainId 143）
 

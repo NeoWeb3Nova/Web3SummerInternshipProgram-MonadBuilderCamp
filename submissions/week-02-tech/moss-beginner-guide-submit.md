@@ -6,17 +6,19 @@
 
 ## 文章链接
 
-https://github.com/NeoWeb3Nova/Web3SummerInternshipProgram-MonadBuilderCamp/blob/master/submissions/week-02-tech/moss-beginner-guide.md
+- **现行修订版（推荐）**：[`moss-beginner-guide-v2.md`](./moss-beginner-guide-v2.md)  
+  https://github.com/NeoWeb3Nova/Web3SummerInternshipProgram-MonadBuilderCamp/blob/master/submissions/week-02-tech/moss-beginner-guide-v2.md
+- Week 2 历史稿（Plan/expects）：[`moss-beginner-guide.md`](./moss-beginner-guide.md)
+- 勘误索引：[`moss-architecture-errata.md`](./moss-architecture-errata.md)
 
 ## 主题说明
 
-本教程面向 Moss 新手，以零私钥、零资金的 WMON 包装实验跑通四步流程，逐步解释 Plan、预期、实际效果和警告，并给出环境排错、MCP 接入与开源贡献路径。
-
-计数：54 个汉字，77 个非空白字符，符合 50～100 字要求。
+本教程面向 Moss 新手，以零私钥 WMON 包装实验跑通四步流程；**v2** 按 Capability 树与 Receipt 穷尽覆盖重写，并给出 MCP 接入与贡献路径。
 
 ## 公众号发布产物
 
-- Markdown：`moss-beginner-guide.md`
+- Markdown（现行）：`moss-beginner-guide-v2.md`
+- Markdown（历史 Week 2）：`moss-beginner-guide.md`
 - 公众号干净正文：`moss-beginner-guide_排版_摸鱼绿(moyu-green).html`
 - 一键复制预览：`moss-beginner-guide_排版_摸鱼绿(moyu-green)_预览.html`
 - 封面高清原图：`moss-beginner-guide-cover-original.png`

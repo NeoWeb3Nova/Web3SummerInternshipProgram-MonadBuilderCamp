@@ -3,7 +3,9 @@
 > 学员：Neo  
 > GitHub 用户：NeoWeb3Nova  
 > 日期：2026-07-14  
-> 项目方向：Dev Builder（Tech）
+> 项目方向：Dev Builder（Tech）  
+> **2026-07-20 勘误：** 下文「核心能力」原按 Plan/expects 撰写；现行架构见  
+> [`moss-architecture-errata.md`](./moss-architecture-errata.md) 与修订稿 v2。
 
 ## 提交材料
 
@@ -19,11 +21,11 @@ https://github.com/NeoWeb3Nova
 
 https://github.com/NeoWeb3Nova?tab=stars
 
-### 3. 100～200 字分享
+### 3. 100～200 字分享（2026-07-20 同步新架构）
 
-> Moss 把 Monad 上复杂的协议交互封装成 discover → load → action → simulate 的统一能力，让 AI Agent 不必自行拼装 ABI、地址和 calldata。它先生成未签名交易，再基于真实链上状态模拟并核对资金流，出现异常就停止，把最终签名权留给用户。我认为它未来可用于 DeFi 交易助手、自动化金库、DAO 财库和跨协议策略执行，成为 Agent 与钱包之间的安全执行层。
+> Moss 把 Monad 协议交互封装成 discover → load → action → simulate：生成未签名 Capability 树，再经仿真 Changes 与 Receipt 穷尽解析；任意 Warning 即停，签名权留给钱包与用户。可用于 DeFi 助手、金库策略与 Agent 钱包之间的签名前验证层。
 
-正文共 111 个汉字，符合 100～200 字要求。
+（历史 Week 2 原文保留在 git 历史中；上段为现行公开表述。）
 
 ### 4. Moss 开源贡献 PR
 
@@ -45,14 +47,16 @@ Moss 是一个面向 Monad 的 AI Agent 链上协议交互框架。它把不同 
 
 AI Agent 能理解用户意图，却不适合临时拼装高风险链上交易。一次看似简单的 Swap 可能涉及 Router 地址、代币包装、授权额度、滑点、退款和多笔调用；只要其中一项“几乎正确但不完全正确”，就可能造成资产损失。同时，交易正确执行了自身声明的动作，也不代表它符合用户原始意图。
 
-## 核心能力
+## 核心能力（现行 · Capability/Receipt）
 
-1. **discover**：按用户视角的动作查找协议能力，例如 swap、wrap、transfer。
-2. **load**：读取能力的参数语义、意图模板和风险标签。
-3. **action**：由协议适配器生成 Plan，包括未签名交易、预期资金流和完整性哈希。
-4. **simulate**：基于 Monad 真实链上状态回放交易，将实际效果与 Plan 的 `expects` 对账。
-5. **安全停机**：发现未声明资金流、超额授权、Plan 篡改或交易回滚等 warning 时停止。
-6. **签名隔离**：Moss 只构建和验证交易，永不签名、永不发送，私钥始终留在钱包端。
+1. **discover**：按用户视角动词查找协议能力（swap、wrap、transfer…）。
+2. **load**：读取 intent、风险标签、参数类型契约与字段说明。
+3. **action**：协议适配器生成 **Capability 树**（未签名；可嵌套子能力，如 approve）。
+4. **simulate**：`debug_traceCall` 回放 → 有序 Changes → Receipt 穷尽覆盖校验。
+5. **安全停机**：revert、覆盖失败、解析失败等 Warning 时 halt，禁止签名。
+6. **签名隔离**：永不签名、永不发送；Agent 用有序 Receipt 文字做 intent alignment。
+
+> 旧版 Plan + quantified expects 已退役，详见勘误索引。
 
 ## 可能应用场景
 

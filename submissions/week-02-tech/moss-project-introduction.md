@@ -1,8 +1,9 @@
 # Week 2｜Challenge｜认识一个开源项目：Moss
 
-> 学员：Neo
-> 方向：Dev Builder（Tech）
-> 日期：2026-07-14
+> 学员：Neo  
+> 方向：Dev Builder（Tech）  
+> 初稿日期：2026-07-14  
+> **架构同步：2026-07-20**（Capability Tree + Exhaustive Receipt）
 
 ## 提交信息
 
@@ -13,12 +14,17 @@
 
 ## 100～200 字分享
 
-Moss 把 Monad 上复杂的协议交互封装成 `discover → load → action → simulate` 的统一能力，让 AI Agent 不必自行拼装 ABI、地址和 calldata。它先生成未签名交易，再基于真实链上状态模拟并核对资金流，出现异常就停止，把最终签名权留给用户。我认为它未来可用于 DeFi 交易助手、自动化金库、DAO 财库和跨协议策略执行，成为 Agent 与钱包之间的安全执行层。
+Moss 把 Monad 上复杂的协议交互封装成 `discover → load → action → simulate`：Agent 发现能力、加载参数契约、获得未签名 **Capability 树**，再经 `debug_traceCall` 模拟抽出有序 Changes，由 Receipt 穷尽解析为可核对文字；任意 Warning 即停，签名权留给钱包与用户。它适合作为 DeFi 助手、金库策略与 Agent 钱包之间的签名前验证层，而不是替用户自动发交易的机器人。
 
-> 正文共 192 个非空白字符，符合 100～200 字要求。
+> 正文字数以本地统计为准；叙事已从旧 Plan/expects 对账更新为 Capability/Receipt。
 
 ## 延伸证据
 
-- Moss 深度学习笔记：`experiments/moss/MOSS-STUDY-NOTES.md`
-- Moss Exploration Log：`submissions/week-02-tech/github-exploration-log-moss.md`
-- MockVault 适配器草稿：`experiments/moss/packages/protocols/mockvault/`
+| 类型 | 路径 |
+|------|------|
+| 架构勘误索引 | `submissions/week-02-tech/moss-architecture-errata.md` |
+| 入门修订 v2 | `submissions/week-02-tech/moss-beginner-guide-v2.md` |
+| 公众号修订 v2 | `submissions/week-02-tech/moss-wechat-article-v2.md` |
+| 本地通俗讲解 | `experiments/moss/docs/architecture-explained.zh-CN.md` |
+| 深度学习笔记 | `experiments/moss/MOSS-STUDY-NOTES.md` |
+| Exploration Log | `submissions/week-02-tech/github-exploration-log-moss.md`（正文为当时记录，见文首勘误） |
