@@ -1,7 +1,7 @@
 # Team Working Agreement
 
 > 小队：Moss Mini Demo Squad（暂定）  
-> 成员：Neo（Dev）· PM · UI  
+> 成员：Neo（Dev）· Riso（PM）· eleven（UI）  
 > 生效日：2026-07-20  
 > 用途：Week 3 协作默认规则；有冲突时先改本文件再改习惯
 
@@ -154,5 +154,5 @@
 | 成员 | 已读并同意 | 日期 |
 |------|------------|------|
 | Neo（Dev） | ✅ | 2026-07-20 |
-| PM | ⏳ | |
-| UI | ⏳ | |
+| Riso（PM） | ⏳ | |
+| eleven（UI） | ⏳ | |
