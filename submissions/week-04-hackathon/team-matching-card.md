@@ -1,4 +1,4 @@
-# Team Matching Card｜Week 4 Day 3
+# Team Matching Card｜Week 4 Day 2
 
 > 学分：+20  
 > 用途：记录队友匹配、可检查贡献与最小协作方式  
