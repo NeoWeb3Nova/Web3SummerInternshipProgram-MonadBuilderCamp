@@ -57,7 +57,19 @@
 - **Ops**: Campaign 方案 + 增长数据 + 用户反馈 + 复盘
 - **Research**: 研究文章 + 生态地图 + Product Thesis + 引用来源
 
-### 5. Hackathon 提交包
+### 5a. Week 4 Playground 阶段（本周强制）
+
+详见 `tasks/week-04-hackathon.md`。本周重点是协作与验证，共 100 学分：
+
+- Builder Signal（+10）
+- Problem & Idea Card（+20）
+- Team Matching Card（+20）
+- 3-Person Reality Check（+20）
+- Hackathon Start Card（+30）
+
+路径：`submissions/week-04-hackathon/`
+
+### 5b. Hackathon 终期提交包（Build Sprint 后）
 
 - Pitch Deck
 - Demo Video（建议 2-3 分钟）

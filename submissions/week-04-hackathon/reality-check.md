@@ -7,6 +7,15 @@
 > 当前状态：**模拟预访谈，不是 3 位真实用户访谈，暂不作为正式任务完成证据**  
 > 原则：先用 Persona 暴露假设，再问 3 位真人决定是否开发
 
+### Day 4 正式执行工具（请用这些，不要只停在 Persona）
+
+| 角色 | 工具包 | 路径 |
+|------|--------|------|
+| **Riso** | 邀请话术 + 记录模板 + 交叉结论表 | [`interview-kit-riso.md`](./interview-kit-riso.md) |
+| **Neo** | Moss Swap 技术验证 checklist | [`moss-swap-tech-checklist.md`](./moss-swap-tech-checklist.md) |
+
+真人访谈完成后：把 3 份单人记录与团队决定**追加到本文末尾**，或新建 `reality-check-real.md` 并在此注明链接；自检勾选「补充 3 位真实用户」。
+
 ---
 
 ## 待验证的问题（复述）

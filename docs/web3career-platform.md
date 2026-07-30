@@ -87,19 +87,27 @@ Web3 Career Build 页面描述：
 
 运营方向学员还可参与 Hackathon 筹备组：活动规则设计、赛道说明、时间线规划、提交要求、社群运营、FAQ、DDL 提醒、Demo Day 筹备、活动复盘。
 
-### Week 4：Monad Builder Season & Hackathon Week
+### Week 4：Monad Playground Hackathon
 
-主题：From Prototype to Product — Ship on Monad
+主题：认识 Builder、分享 Idea、寻找队友、判断需求，并确定下一周最先完成什么。  
+本周不要求立刻完成完整产品；可继续 Week 3 团队，也可换方向或新组队。
 
-最终交付成果：
+轻量任务（共 100 学分）：
 
-- 可运行产品链接或 Repo
-- 合约地址、Transaction Hash、Explorer 链接
-- Pitch Deck
-- 2–5 分钟 Demo Video
-- Final Presentation（用于 Demo Day 展示）
+| 任务 | 学分 |
+|------|------|
+| 发出 Builder Signal | +10 |
+| 分享一个值得验证的 Idea | +20 |
+| 找到队友或加入团队 | +20 |
+| 完成一次 3 人需求检查 | +20 |
+| 提交 Hackathon Start Card | +30 |
 
-评审维度：
+每日 Co-Learning（20:00）开放 Idea 分享、队友匹配与项目讨论。
+
+本周交付：Builder Signal、Problem & Idea Card、Team Matching Card、3-Person Reality Check、Hackathon Start Card。  
+可运行 Demo / Repo / Pitch / Demo Video 等属于后续 Build Sprint 与终期提交。
+
+终期评审维度（进入 Build 后参考）：
 
 - 产品完成度
 - Monad Native 程度

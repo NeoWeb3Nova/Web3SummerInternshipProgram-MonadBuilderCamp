@@ -9,7 +9,7 @@
 - `week-02-ops/` - Ops Track：生态地图、用户观察、Campaign、增长复盘
 - `week-02-research/` - Research Track：研究大纲、分析文章、生态地图
 - `week-03/` - 合作实战期：团队、问题定义、方案设计、Mini Demo
-- `week-04-hackathon/` - Monad Builder Hackathon 提交
+- `week-04-hackathon/` - Monad Playground Hackathon：Signal / Idea / 组队 / 需求检查 / Start Card
 - `week-05-portfolio/` - 作品集、简历、面试、后续机会
 
 ## 提交规范
@@ -30,5 +30,5 @@
 | Week 2 Ops | `ecosystem-map.md`, `user-insights.md`, `campaign-plan.md`, `metrics.md`, `retro.md` |
 | Week 2 Research | `research-outline.md`, `analysis-notes.md`, `research-article.md`, `retro.md` |
 | Week 3 | `team.md`, `problem-statement.md`, `solution-design.md`, `feedback.md`, `demo.md`, `retro.md` |
-| Week 4 | `plan.md`, `demo-link.md`, `repo.md`, `deployment.md`, `demo-video.md`, `presentation.md`, `retro.md` |
+| Week 4 | `builder-signal.md`, `problem-idea-card.md`, `team-matching-card.md`, `reality-check.md`, `hackathon-start-card.md`, `retro.md`（可选） |
 | Week 5 | `evidence-index.md`, `portfolio.md`, `resume-bullets.md`, `interview-pitch.md`, `personal-brand-post.md`, `follow-up.md`, `final-retro.md` |

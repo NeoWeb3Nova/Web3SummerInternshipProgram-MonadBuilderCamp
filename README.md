@@ -60,7 +60,7 @@
 | Week 1 | 进入 Onchain World | 钱包、网络配置、第一次交易、第一次 Monad 合约部署 |
 | Week 2 | 选择 Builder Track | 分轨任务：Tech / Ops / Research |
 | Week 3 | 跨轨协作与 Mini Demo | 跨轨小组把想法推进成 prototype |
-| Week 4 | Monad Builder Hackathon | 提交可运行产品、Repo、Pitch Deck、Demo Video、Final Presentation |
+| Week 4 | Monad Playground Hackathon | Builder Signal、Idea、组队、3 人需求验证、Hackathon Start Card（100 学分） |
 | Week 5 | Resume & Portfolio Workshop | 作品集、简历 bullet、README、面试表达、后续机会连接 |
 
 ## 目录结构

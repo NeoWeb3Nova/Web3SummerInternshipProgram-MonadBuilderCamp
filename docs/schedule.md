@@ -9,7 +9,7 @@
 | Week 1 | 认知奠基期 | 我如何真正进入 Web3？ | 钱包、链上体验、AI 工具、第一笔交易、学习日志 |
 | Week 2 | 分赛道学习 | 我更适合 Tech / Ops / Research 哪条路径？ | 分轨任务、研究/运营/技术材料 |
 | Week 3 | 合作实战期 | 如何和不同角色组队做出 Mini Demo？ | 小队、问题定义、MVP 原型、Mini Demo |
-| Week 4 | Hackathon 战场 | 如何把原型打磨成参赛作品？ | 可运行 Demo、Repo、Pitch、Demo Video、Demo Day |
+| Week 4 | Monad Playground Hackathon | 如何认识 Builder、验证需求并确定下一周第一步？ | Builder Signal、Idea、组队、3 人验证、Start Card |
 | Week 5 | 作品集与就业准备 | 如何把项目变成职业证据？ | Portfolio、简历 bullet、面试讲稿、后续机会清单 |
 
 ## 日常节奏
@@ -103,29 +103,30 @@
 - Prototype / Mini Demo
 - 反馈与复盘
 
-## Week 4: Monad Builder Hackathon
+## Week 4: Monad Playground Hackathon
 
-**目标**: 把前 3 周积累打磨成 Hackathon 参赛作品。
+**目标**: 正式进入黑客松 Playground——认识 Builder、分享 Idea、寻找队友、判断需求，并确定下一周最先完成什么。本周不要求立刻完成完整产品。
+
+**学分**: 5 个轻量任务，共 100 学分（详见 `tasks/week-04-hackathon.md`）。
 
 关键动作：
 
-- Idea brainstorm
-- 团队组建与角色确认
-- 产品冲刺
-- 导师辅导
-- 用户反馈
-- Demo Day
-- 提交 Hackathon 作品
+- Day 1：发出 Builder Signal（+10）
+- Day 2：分享一个值得验证的 Idea（+20）
+- Day 3：找到队友或加入团队（+20）
+- Day 4：完成一次 3 人需求检查（+20）
+- Day 5：提交 Hackathon Start Card（+30）
+- 每晚 20:00 Co-Learning：Idea 分享、队友匹配、项目讨论
 
 交付物：
 
-- 可运行产品 Demo
-- GitHub Repo
-- Pitch Deck
-- Demo Video
-- Final Presentation
-- 团队介绍与分工
-- 黑客松复盘
+- Builder Signal
+- Problem & Idea Card
+- Team Matching Card
+- 3-Person Reality Check
+- Hackathon Start Card（核心动作、真实 vs Mock、下周头号风险）
+
+说明：可运行 Demo、Repo、Pitch Deck、Demo Video 等属于后续 Build Sprint / 终期提交，不是本周强制交付。
 
 ## Week 5: 作品集与就业准备
 
